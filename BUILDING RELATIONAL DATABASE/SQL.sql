@@ -1,6 +1,8 @@
 -- Macelo Henrique - RM98893
 -- Marcel P. Soddano - RM99841
 -- Nicolas E. Inohue - RM98057
+--
+--
 
 DROP TABLE sintoma CASCADE CONSTRAINTS;
 DROP TABLE paciente CASCADE CONSTRAINTS; 
