@@ -16,7 +16,8 @@ public class PacienteController {
     @PostMapping
     @Transactional
     public void cadastrar(@RequestBody DadosCadastroPaciente dados) {
-        System.out.println("dados recebido: " + dados);
+
+         System.out.println("dados recebido: " + dados);
     }
 
     @GetMapping

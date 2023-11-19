@@ -4,12 +4,6 @@
 --
 --
 
-DROP TABLE sintoma CASCADE CONSTRAINTS;
-DROP TABLE paciente CASCADE CONSTRAINTS; 
-DROP TABLE prediagnostico CASCADE CONSTRAINTS;
-DROP TABLE medico CASCADE CONSTRAINTS;
-DROP TABLE consulta CASCADE CONSTRAINTS;
-
 CREATE TABLE consulta (
     id NUMBER CONSTRAINT id_consulta_pk PRIMARY KEY,
     data_consulta DATE CONSTRAINT data_consulta_nn NOT NULL,
@@ -54,16 +48,6 @@ CREATE TABLE medico (
     cidade VARCHAR2(100) CONSTRAINT cidade_medico_nn NOT NULL,
     consulta_id NUMBER,
     prediagnostico_id NUMBER
-);
-
-CREATE TABLE sintoma (
-    id VARCHAR2(100) CONSTRAINT id_sintoma_pk PRIMARY KEY,
-    descricao VARCHAR2(300) CONSTRAINT descricao_sintoma_nn NOT NULL,
-    tipo VARCHAR2(30) CONSTRAINT tipo_sintoma_nn NOT NULL,
-    data_inicio DATE CONSTRAINT data_inicio_sintoma_nn NOT NULL,
-    gravidade VARCHAR2(30) CONSTRAINT gravidade_sintoma_nn NOT NULL,
-    observacoes VARCHAR(150),
-    paciente_id NUMBER
 );
 
 CREATE TABLE prediagnostico (
