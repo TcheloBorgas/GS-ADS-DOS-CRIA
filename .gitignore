@@ -1,0 +1,29 @@
+# .gitignore
+
+# Arquivos Byte-compiled / otimizados
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Arquivos do Jupyter Notebook
+.ipynb_checkpoints
+
+# Logs
+logs/
+*.log
+
+# Arquivos de imagem e video
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.bmp
+*.tiff
+*.ico
+*.jfif
+*.webp
+*.svg
+*.mp4
+*.wav
+*.h5
+

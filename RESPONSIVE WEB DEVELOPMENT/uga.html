@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Operações CRUD</title>
+</head>
+<body>
+    <h2>Upload de Imagem</h2>
+    <form action="http://localhost:5000/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <input type="submit" value="Upload">
+    </form>
+
+    <h2>Criar Entrada</h2>
+    <form action="http://localhost:5000/create" method="post">
+        <input type="text" name="field1" placeholder="Campo 1">
+        <input type="text" name="field2" placeholder="Campo 2">
+        <input type="submit" value="Criar">
+    </form>
+
+    <h2>Atualizar Entrada</h2>
+    <form action="http://localhost:5000/update" method="post">
+        <input type="text" name="id" placeholder="ID">
+        <input type="text" name="field1" placeholder="Campo 1">
+        <input type="text" name="field2" placeholder="Campo 2">
+        <input type="submit" value="Atualizar">
+    </form>
+
+    <h2>Ler Entradas</h2>
+    <a href="http://localhost:5000/read">Ler Entradas</a>
+
+    <h2>Deletar Entrada</h2>
+    <form action="http://localhost:5000/delete" method="post">
+        <input type="text" name="id" placeholder="ID">
+        <input type="submit" value="Deletar">
+    </form>
+
+</body>
+</html>
