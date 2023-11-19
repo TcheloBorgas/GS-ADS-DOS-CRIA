@@ -1,4 +1,3 @@
-DROP TABLE sintoma CASCADE CONSTRAINTS;
 DROP TABLE paciente CASCADE CONSTRAINTS; 
 DROP TABLE prediagnostico CASCADE CONSTRAINTS;
 DROP TABLE medico CASCADE CONSTRAINTS;
@@ -37,16 +36,6 @@ CREATE TABLE medico (
     horario_atendimento_medico DATE CONSTRAINT horario_atendimento_medico_nn NOT NULL,
     consulta_id NUMBER,
     prediagnostico_id NUMBER
-);
-
-CREATE TABLE sintoma (
-    simtoma_id VARCHAR2(100) CONSTRAINT id_sintoma_pk PRIMARY KEY,
-    descricao_sintoma VARCHAR2(300) CONSTRAINT descricao_sintoma_nn NOT NULL,
-    tipo_sintoma VARCHAR2(30) CONSTRAINT tipo_sintoma_nn NOT NULL,
-    data_inicio_sintoma DATE CONSTRAINT data_inicio_sintoma_nn NOT NULL,
-    gravidade_sintoma VARCHAR2(30) CONSTRAINT gravidade_sintoma_nn NOT NULL,
-    observacoes_sintoma VARCHAR(150),
-    paciente_id NUMBER
 );
 
 CREATE TABLE prediagnostico (
@@ -136,22 +125,6 @@ VALUES (204, 'Dr. Taylor', 'Neurologist', '555-4321', 'CRM54321', 'Hamlet Medica
 INSERT INTO medico (id_medico, nome_medico, especialidade_medico, contato_medico, crm_medico, hospital_medico, horario_atendimento_medico)
 VALUES (205, 'Dr. White', 'Pediatrician', '555-8765', 'CRM87654', 'Borough Childrens Hospital', TO_DATE('2023-11-21 16:15:00', 'YYYY-MM-DD HH24:MI:SS'));
 
--- Inserindo dados na tabela Sintoma
-INSERT INTO sintoma (simtoma_id, descricao_sintoma, tipo_sintoma, data_inicio_sintoma, gravidade_sintoma, observacoes_sintoma)
-VALUES ('SYM001', 'Headache', 'General', TO_DATE('2023-11-10', 'YYYY-MM-DD'), 'Moderate', 'None');
-
-INSERT INTO sintoma (simtoma_id, descricao_sintoma, tipo_sintoma, data_inicio_sintoma, gravidade_sintoma, observacoes_sintoma)
-VALUES ('SYM002', 'Back Pain', 'Orthopedic', TO_DATE('2023-11-15', 'YYYY-MM-DD'), 'Severe', 'Previous injury');
-
-INSERT INTO sintoma (simtoma_id, descricao_sintoma, tipo_sintoma, data_inicio_sintoma, gravidade_sintoma, observacoes_sintoma)
-VALUES ('SYM003', 'Skin Rash', 'Dermatological', TO_DATE('2023-11-19', 'YYYY-MM-DD'), 'Mild', 'Itchy and red');
-
-INSERT INTO sintoma (simtoma_id, descricao_sintoma, tipo_sintoma, data_inicio_sintoma, gravidade_sintoma, observacoes_sintoma)
-VALUES ('SYM004', 'Seizures', 'Neurological', TO_DATE('2023-11-20', 'YYYY-MM-DD'), 'Severe', 'Frequent episodes');
-
-INSERT INTO sintoma (simtoma_id, descricao_sintoma, tipo_sintoma, data_inicio_sintoma, gravidade_sintoma, observacoes_sintoma)
-VALUES ('SYM005', 'Fever', 'General', TO_DATE('2023-11-21', 'YYYY-MM-DD'), 'Moderate', 'Temperature of 101°F');
-
 -- Inserindo dados na tabela Prediagnostico
 INSERT INTO prediagnostico (id_diagnostico, descricao_diagnostico, data_diagnostico, resultado_diagnostico, tratamento_recomendado, setor_recomendado, observacoes_diagnostico)
 VALUES (301, 'Cardiac Arrhythmia', TO_DATE('2023-11-17', 'YYYY-MM-DD'), 'Positive', 'Medication', 'Cardiology', 'None');
@@ -170,7 +143,7 @@ VALUES (305, 'Infection', TO_DATE('2023-11-21', 'YYYY-MM-DD'), 'Positive', 'Anti
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 --RELATORIOS
---seleciona consulta de id da consulta e data da consulta 
+--Seleciona data consulta, horario de consulta das consultas com id maior que 5
 SELECT id_consulta, data_consulta, horario_consulta
 FROM consulta 
 WHERE id_consulta > 5 
@@ -183,19 +156,19 @@ JOIN medico m ON c.medico_id = m.id_medico
 JOIN paciente p ON c.paciente_id = p.id_paciente
 ORDER BY c.data_consulta, c.horario_consulta;
 
--- Seleciona pacientes com sintomas graves e os tratamentos recomendados
-SELECT p.nome_paciente, s.descricao_sintoma, s.gravidade_sintoma, pd.tratamento_recomendado
-FROM paciente p
-JOIN sintoma s ON p.id_paciente = s.paciente_id
-JOIN prediagnostico pd ON p.id_paciente = pd.paciente_id
-WHERE s.gravidade_sintoma = 'Severe'
-ORDER BY p.nome_paciente;
-
 -- Lista médicos e seus setores recomendados
 SELECT m.nome_medico, m.especialidade_medico, pd.setor_recomendado
 FROM medico m
 JOIN prediagnostico pd ON m.prediagnostico_id = pd.id_diagnostico
 ORDER BY m.nome_medico;
+
+-- Lista consultas agendadas para hoje ou depois, exibe apenas consultas agendadas para hoje ou datas futuras. Resultados ordenados por data e horário de consulta.
+SELECT c.id_consulta, c.data_consulta, c.horario_consulta, p.nome_paciente, p.dt_nascimento_paciente, p.sexo_paciente, m.nome_medico
+FROM consulta c
+JOIN paciente p ON c.paciente_id = p.id_paciente
+JOIN medico m ON c.medico_id = m.id_medico
+WHERE c.data_consulta >= TRUNC(SYSDATE)
+ORDER BY c.data_consulta, c.horario_consulta;
 
 -- Conta o número de pacientes por sexo e especialidade médica
 SELECT p.sexo_paciente, m.especialidade_medico, COUNT(*) AS numero_pacientes
@@ -204,10 +177,12 @@ JOIN consulta c ON p.consulta_id = c.id_consulta
 JOIN medico m ON c.medico_id = m.id_medico
 GROUP BY p.sexo_paciente, m.especialidade_medico;
 
--- Lista sintomas registrados por tipo e gravidade
-SELECT tipo_sintoma, gravidade_sintoma, COUNT(*) AS numero_sintomas
-FROM sintoma
-GROUP BY tipo_sintoma, gravidade_sintoma;
+-- Seleciona número de consultas por médico, ordenado em ordem decrescente
+SELECT m.nome_medico, COUNT(c.id_consulta) AS num_consultas
+FROM medico m
+JOIN consulta c ON m.id_medico = c.medico_id
+GROUP BY m.nome_medico
+ORDER BY num_consultas DESC;
 
 --consulta nome do paciente, data de nascimento, sexo e nome do medico associado a consulta do paciente, apenas para pacientes do sexo feminino, ordenação é feita pelo nome do paciente.
 SELECT p.nome_paciente, p.dt_nascimento_paciente, p.sexo_paciente, m.nome_medico
@@ -246,27 +221,21 @@ JOIN medico m ON c.medico_id = m.id_medico
 WHERE p.sexo_paciente = 'Male'
 ORDER BY p.nome_paciente;
 
---junção de tabelas paciente e sintoma, e cálculo da média de idades para paciente com mais de um sintoma registrado e agrupa resultados pelo nome do paciente. (extract calcula idade com base na data de nascimento.)
-SELECT
-  p.nome_paciente,
-  AVG(EXTRACT(YEAR FROM SYSDATE) - EXTRACT(YEAR FROM p.dt_nascimento_paciente)) AS media_idade
-FROM
-  paciente p
-JOIN
-  sintoma s ON p.id_paciente = s.paciente_id
-GROUP BY
-  p.nome_paciente
-HAVING
-  COUNT(s.simtoma_id) > 1;
+-- Calcula média do número de consultas por médico, excluindo médicos com menos de 3 consultas, resultados são ordenados pela média de consultas em ordem decrescente
+SELECT m.nome_medico, AVG(COUNT(c.id_consulta)) AS media_consultas
+FROM medico m
+JOIN consulta c ON m.id_medico = c.medico_id
+GROUP BY m.nome_medico
+HAVING COUNT(c.id_consulta) >= 3
+ORDER BY media_consultas DESC;
+
 
 DESC paciente;
 DESC medico;
 DESC consulta;
 DESC prediagnostico;
-DESC sintoma;
 
 SELECT * FROM paciente;
 SELECT * FROM medico;
 SELECT * FROM consulta;
 SELECT * FROM prediagnostico;
-SELECT * FROM sintoma;
