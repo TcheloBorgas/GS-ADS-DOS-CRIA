@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="70770B0B-7B3B-321F-DDF2-D3E58AFFFB60" containerWithKeyObject="212FA86A-07E4-5B0E-50A5-732A1D526AF7" localFKIndex="84D38311-68DF-F3B0-230E-E8D8E5BA1B97" name="consulta_paciente_FK">
+<createdBy>nicni</createdBy>
+<createdTime>2023-11-20 21:40:24 UTC</createdTime>
+<generatorID>9982B0F4-0740-9F76-1909-5B8594565F6C</generatorID>
+<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
+<referredTableLongName>paciente</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>226A9E6A-D099-38B9-B976-8249CCEB6A12</referredTableID>
+<keyObject>A5DC65CF-C44A-F34F-BB11-DEE75403E445</keyObject>
+<referredKeyID>A5DC65CF-C44A-F34F-BB11-DEE75403E445</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>
