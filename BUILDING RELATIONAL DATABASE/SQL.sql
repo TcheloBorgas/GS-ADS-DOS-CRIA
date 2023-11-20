@@ -1,8 +1,13 @@
+-- Henry Komatsu 
 -- Macelo Henrique - RM98893
 -- Marcel P. Soddano - RM99841
 -- Nicolas E. Inohue - RM98057
---
---
+-- Ricardo Brito 
+
+DROP TABLE paciente;
+DROP TABLE medico;
+DROP TABLE consulta;
+DROP TABLE prediagnostico;
 
 CREATE TABLE consulta (
     id NUMBER CONSTRAINT id_consulta_pk PRIMARY KEY,
@@ -27,6 +32,7 @@ CREATE TABLE paciente (
     numero VARCHAR2(20) CONSTRAINT numero_paciente_nn NOT NULL,
     uf VARCHAR2(2) CONSTRAINT uf_paciente_nn NOT NULL,
     cidade VARCHAR2(100) CONSTRAINT cidade_paciente_nn NOT NULL,
+    sintoma VARCHAR(100) CONSTRAINT sintoma_paciente_nn NOT NULL,
     plano_saude VARCHAR2(100) CONSTRAINT plano_de_saude_paciente_nn NOT NULL,
     historico_medico VARCHAR2(500) CONSTRAINT historico_medico_paciente_nn NOT NULL,
     consulta_id NUMBER
@@ -79,9 +85,6 @@ ADD CONSTRAINT fk_medico_consulta FOREIGN KEY (consulta_id) REFERENCES consulta 
 ALTER TABLE medico
 ADD CONSTRAINT fk_medico_diagnostico FOREIGN KEY (prediagnostico_id) REFERENCES prediagnostico (id);
 
-ALTER TABLE sintoma
-ADD CONSTRAINT fk_sintoma_paciente FOREIGN KEY (paciente_id) REFERENCES paciente (id);
-
 ALTER TABLE prediagnostico
 ADD CONSTRAINT fk_prediagnostico_paciente FOREIGN KEY (paciente_id) REFERENCES paciente (id);
 
@@ -105,6 +108,21 @@ VALUES (4, TO_DATE('2023-11-20', 'YYYY-MM-DD'), TO_DATE('2023-11-20 11:45:00', '
 INSERT INTO consulta (id, data_consulta, horario_consulta)
 VALUES (5, TO_DATE('2023-11-21', 'YYYY-MM-DD'), TO_DATE('2023-11-21 16:30:00', 'YYYY-MM-DD HH24:MI:SS'));
 
+INSERT INTO consulta (id, data_consulta, horario_consulta)
+VALUES (6, TO_DATE('2023-11-22', 'YYYY-MM-DD'), TO_DATE('2023-11-22 08:45:00', 'YYYY-MM-DD HH24:MI:SS'));
+
+INSERT INTO consulta (id, data_consulta, horario_consulta)
+VALUES (7, TO_DATE('2023-11-23', 'YYYY-MM-DD'), TO_DATE('2023-11-23 13:00:00', 'YYYY-MM-DD HH24:MI:SS'));
+
+INSERT INTO consulta (id, data_consulta, horario_consulta)
+VALUES (8, TO_DATE('2023-11-24', 'YYYY-MM-DD'), TO_DATE('2023-11-24 10:15:00', 'YYYY-MM-DD HH24:MI:SS'));
+
+INSERT INTO consulta (id, data_consulta, horario_consulta)
+VALUES (9, TO_DATE('2023-11-25', 'YYYY-MM-DD'), TO_DATE('2023-11-25 15:30:00', 'YYYY-MM-DD HH24:MI:SS'));
+
+INSERT INTO consulta (id, data_consulta, horario_consulta)
+VALUES (10, TO_DATE('2023-11-26', 'YYYY-MM-DD'), TO_DATE('2023-11-26 11:00:00', 'YYYY-MM-DD HH24:MI:SS'));
+
 -- Inserindo dados na tabela Paciente
 INSERT INTO paciente (id, nome, cpf, dt_nascimento, sexo, logradouro, numero, bairro, cep, complemento, uf, cidade, telefone, email, plano_saude, historico_medico)
 VALUES (101, 'John Doe', '12345678901', TO_DATE('1990-01-01', 'YYYY-MM-DD'), 'Male', '123 Main St', 101, 'City', '12345-678', 'Apto 302', 'SP', 'São Paulo', 12345678901, 'john.doe@example.com', 'Health Plan A', 'No significant history');
@@ -120,6 +138,21 @@ VALUES (104, 'Emily Davis', '99988877766', TO_DATE('1995-04-12', 'YYYY-MM-DD'), 
 
 INSERT INTO paciente (id, nome, cpf, dt_nascimento, sexo, logradouro, numero, bairro, cep, complemento, uf, cidade, telefone, email, plano_saude, historico_medico)
 VALUES (105, 'David Wilson', '11122233344', TO_DATE('1988-11-25', 'YYYY-MM-DD'), 'Male', '654 Elm St', 505, 'Borough', '65432-109', 'Bloco C', 'PR', 'Curitiba', 1112223344, 'david.wilson@example.com', 'Health Plan E', 'None');
+
+INSERT INTO paciente (id, nome, cpf, dt_nascimento, sexo, logradouro, numero, bairro, cep, complemento, uf, cidade, telefone, email, plano_saude, historico_medico)
+VALUES (106, 'Isabel Silva', '77788899900', TO_DATE('1993-07-08', 'YYYY-MM-DD'), 'Female', '321 Maple St', 606, 'District', '87654-321', 'Apto 201', 'SC', 'Florianópolis', 7778889990, 'isabel.silva@example.com', 'Health Plan F', 'None');
+
+INSERT INTO paciente (id, nome, cpf, dt_nascimento, sexo, logradouro, numero, bairro, cep, complemento, uf, cidade, telefone, email, plano_saude, historico_medico)
+VALUES (107, 'Carlos Oliveira', '33344455566', TO_DATE('1980-03-17', 'YYYY-MM-DD'), 'Male', '852 Pine St', 707, 'Vale', '34567-890', 'Casa 2', 'BA', 'Salvador', 3334445556, 'carlos.oliveira@example.com', 'Health Plan G', 'Diabetes');
+
+INSERT INTO paciente (id, nome, cpf, dt_nascimento, sexo, logradouro, numero, bairro, cep, complemento, uf, cidade, telefone, email, plano_saude, historico_medico)
+VALUES (108, 'Fernanda Santos', '12121212121', TO_DATE('1997-12-05', 'YYYY-MM-DD'), 'Female', '753 Oak St', 808, 'Suburb', '23456-789', 'Casa 3', 'PE', 'Recife', 1212121212, 'fernanda.santos@example.com', 'Health Plan H', 'Migraine');
+
+INSERT INTO paciente (id, nome, cpf, dt_nascimento, sexo, logradouro, numero, bairro, cep, complemento, uf, cidade, telefone, email, plano_saude, historico_medico)
+VALUES (109, 'Ricardo Lima', '45454545454', TO_DATE('1984-09-22', 'YYYY-MM-DD'), 'Male', '456 Cedar St', 909, 'Hill', '78901-234', 'Bloco B', 'GO', 'Goiânia', 4545454545, 'ricardo.lima@example.com', 'Health Plan I', 'High cholesterol');
+
+INSERT INTO paciente (id, nome, cpf, dt_nascimento, sexo, logradouro, numero, bairro, cep, complemento, uf, cidade, telefone, email, plano_saude, historico_medico)
+VALUES (110, 'Camila Pereira', '66677788899', TO_DATE('1992-02-14', 'YYYY-MM-DD'), 'Female', '987 Pine St', 1010, 'Haven', '56789-012', 'Apto 401', 'DF', 'Brasília', 6667778889, 'camila.pereira@example.com', 'Health Plan J', 'None');
 
 --Inserindo dados na tabela Medico
 INSERT INTO medico (id, nome, email, especialidade, telefone, crm, logradouro, bairro, cep, complemento, numero, uf, cidade)
@@ -137,21 +170,20 @@ VALUES (204, 'Dr. Taylor', 'dr.taylor@example.com', 'Neurologist', '555-4321', '
 INSERT INTO medico (id, nome, email, especialidade, telefone, crm, logradouro, bairro, cep, complemento, numero, uf, cidade)
 VALUES (205, 'Dr. White', 'dr.white@example.com', 'Pediatrician', '555-8765', 'CRM87654', 'Borough Childrens Hospital', 'Pediatric Zone', '65432-109', 'Sala 205', 10, 'PR', 'Curitiba');
 
--- Inserindo dados na tabela Sintoma
-INSERT INTO sintoma (id, descricao, tipo, data_inicio, gravidade, observacoes)
-VALUES ('SYM001', 'Headache', 'General', TO_DATE('2023-11-10', 'YYYY-MM-DD'), 'Moderate', 'None');
+INSERT INTO medico (id, nome, email, especialidade, telefone, crm, logradouro, bairro, cep, complemento, numero, uf, cidade)
+VALUES (206, 'Dra. Oliveira', 'dra.oliveira@example.com', 'Gynecologist', '555-3456', 'CRM34567', 'Women Wellness Center', 'Women District', '76543-210', 'Andar 2', 25, 'SC', 'Florianópolis');
 
-INSERT INTO sintoma (id, descricao, tipo, data_inicio, gravidade, observacoes)
-VALUES ('SYM002', 'Back Pain', 'Orthopedic', TO_DATE('2023-11-15', 'YYYY-MM-DD'), 'Severe', 'Previous injury');
+INSERT INTO medico (id, nome, email, especialidade, telefone, crm, logradouro, bairro, cep, complemento, numero, uf, cidade)
+VALUES (207, 'Dr. Pereira', 'dr.pereira@example.com', 'Oncologist', '555-7890', 'CRM78901', 'Cancer Care Clinic', 'Oncology Zone', '87654-321', 'Bloco C', 36, 'BA', 'Salvador');
 
-INSERT INTO sintoma (id, descricao, tipo, data_inicio, gravidade, observacoes)
-VALUES ('SYM003', 'Skin Rash', 'Dermatological', TO_DATE('2023-11-19', 'YYYY-MM-DD'), 'Mild', 'Itchy and red');
+INSERT INTO medico (id, nome, email, especialidade, telefone, crm, logradouro, bairro, cep, complemento, numero, uf, cidade)
+VALUES (208, 'Dra. Lima', 'dra.lima@example.com', 'Psychiatrist', '555-0123', 'CRM01234', 'Mind Health Institute', 'Mental Health District', '23456-789', 'Sala 301', 15, 'PE', 'Recife');
 
-INSERT INTO sintoma (id, descricao, tipo, data_inicio, gravidade, observacoes)
-VALUES ('SYM004', 'Seizures', 'Neurological', TO_DATE('2023-11-20', 'YYYY-MM-DD'), 'Severe', 'Frequent episodes');
+INSERT INTO medico (id, nome, email, especialidade, telefone, crm, logradouro, bairro, cep, complemento, numero, uf, cidade)
+VALUES (209, 'Dr. Santos', 'dr.santos@example.com', 'Urologist', '555-3417', 'CRM32561', 'Urology Center', 'Urology Zone', '87654-321', 'Andar 2', 22, 'GO', 'Goiânia');
 
-INSERT INTO sintoma (id, descricao, tipo, data_inicio, gravidade, observacoes)
-VALUES ('SYM005', 'Fever', 'General', TO_DATE('2023-11-21', 'YYYY-MM-DD'), 'Moderate', 'Temperature of 101°F');
+INSERT INTO medico (id, nome, email, especialidade, telefone, crm, logradouro, bairro, cep, complemento, numero, uf, cidade)
+VALUES (210, 'Dra. Pereira', 'dra.pereira@example.com', 'Endocrinologist', '555-7836', 'CRM98911', 'Endocrinology Clinic', 'Endocrinology Zone', '87654-321', 'Bloco C', 33, 'DF', 'Brasília');
 
 -- Inserindo dados na tabela Prediagnostico
 INSERT INTO prediagnostico (id, descricao, data_diagnostico, resultado, tratamento_recomendado, setor_recomendado, observacoes)
@@ -168,6 +200,21 @@ VALUES (304, 'Epilepsy', TO_DATE('2023-11-20', 'YYYY-MM-DD'), 'Positive', 'Antie
 
 INSERT INTO prediagnostico (id, descricao, data_diagnostico, resultado, tratamento_recomendado, setor_recomendado, observacoes)
 VALUES (305, 'Infection', TO_DATE('2023-11-21', 'YYYY-MM-DD'), 'Positive', 'Antibiotics', 'Pediatrics', 'Advised bed rest and hydration');
+
+INSERT INTO prediagnostico (id, descricao, data_diagnostico, resultado, tratamento_recomendado, setor_recomendado, observacoes)
+VALUES (306, 'Respiratory Infection', TO_DATE('2023-11-22', 'YYYY-MM-DD'), 'Positive', 'Antibiotics', 'Pulmonology', 'Rest and fluids recommended');
+
+INSERT INTO prediagnostico (id, descricao, data_diagnostico, resultado, tratamento_recomendado, setor_recomendado, observacoes)
+VALUES (307, 'Herniated Disc', TO_DATE('2023-11-23', 'YYYY-MM-DD'), 'Positive', 'Physical Therapy', 'Orthopedics', 'Avoid heavy lifting and follow exercise regimen');
+
+INSERT INTO prediagnostico (id, descricao, data_diagnostico, resultado, tratamento_recomendado, setor_recomendado, observacoes)
+VALUES (308, 'Skin Rash', TO_DATE('2023-11-24', 'YYYY-MM-DD'), 'Positive', 'Topical Cream', 'Dermatology', 'Keep the affected area clean and dry');
+
+INSERT INTO prediagnostico (id, descricao, data_diagnostico, resultado, tratamento_recomendado, setor_recomendado, observacoes)
+VALUES (309, 'Migraine', TO_DATE('2023-11-25', 'YYYY-MM-DD'), 'Positive', 'Pain Medication', 'Neurology', 'Avoid triggers and maintain regular sleep');
+
+INSERT INTO prediagnostico (id, descricao, data_diagnostico, resultado, tratamento_recomendado, setor_recomendado, observacoes)
+VALUES (310, 'Stomach Flu', TO_DATE('2023-11-26', 'YYYY-MM-DD'), 'Positive', 'Fluids and Rest', 'Gastroenterology', 'Watch for dehydration and follow a bland diet');
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 --RELATORIOS
@@ -247,27 +294,26 @@ JOIN medico m ON c.medico_id = m.id
 WHERE p.sexo = 'Male'
 ORDER BY p.nome;
 
---junção de tabelas paciente e sintoma, e cálculo da média de idades para paciente com mais de um sintoma registrado e agrupa resultados pelo nome do paciente. (extract calcula idade com base na data de nascimento.)
-SELECT
-  p.nome,
-  AVG(EXTRACT(YEAR FROM SYSDATE) - EXTRACT(YEAR FROM p.dt_nascimento)) AS media_idade
-FROM
-  paciente p
-JOIN
-  sintoma s ON p.id = s.paciente_id
-GROUP BY
-  p.nome
-HAVING
-  COUNT(s.id) > 1;
+-- Calcula média do número de consultas por médico, excluindo médicos com menos de 3 consultas, resultados são ordenados pela média de consultas em ordem decrescente
+SELECT m.nome, AVG(consulta_count) AS media_consultas
+FROM medico m
+JOIN (
+    SELECT medico_id, COUNT(id) AS consulta_count
+    FROM consulta
+    GROUP BY medico_id
+) c ON m.id = c.medico_id
+GROUP BY m.nome
+HAVING AVG(consulta_count) >= 3
+ORDER BY media_consultas DESC;
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 DESC paciente;
 DESC medico;
 DESC consulta;
 DESC prediagnostico;
-DESC sintoma;
 
 SELECT * FROM paciente;
 SELECT * FROM medico;
 SELECT * FROM consulta;
 SELECT * FROM prediagnostico;
-SELECT * FROM sintoma;
