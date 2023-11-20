@@ -1,6 +1,7 @@
 package com.quickmedconn.Api.paciente;
 
 import com.quickmedconn.Api.paciente.DadosCadastroPaciente;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("paciente")
 public class PacienteController {
 
+    @Autowired
     private PacienteRepository repository;
 
     @PostMapping

@@ -1,10 +1,6 @@
 package com.quickmedconn.Api.controller;
 
-import com.quickmedconn.Api.endereco.Endereco;
-import com.quickmedconn.Api.medico.DadosCadastroMedico;
-import com.quickmedconn.Api.medico.DadosListagemMedico;
-import com.quickmedconn.Api.medico.Medico;
-import com.quickmedconn.Api.medico.MedicoRepository;
+import com.quickmedconn.Api.medico.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -12,8 +8,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("medicos")
@@ -31,5 +25,21 @@ public class MedicoController {
     public Page <DadosListagemMedico> listar(@PageableDefault(size=10,sort = {"nome"})Pageable paginacao){
         return repository.findAll(paginacao).map(DadosListagemMedico:: new);
     }
+
+    @PutMapping
+    @Transactional
+    public void atualizar(@RequestBody @Valid DadosAtualizacaoMedico dados){
+        var medico= repository.getReferenceById(dados.id());
+        medico.atualizarIndinformacoes(dados);
+    }
+    @DeleteMapping("/3")
+    @Transactional
+    public void excluir(@PathVariable Long id){
+        repository.deleteById(id);
+
+    }
+
+
+
 }
 
