@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━❮◆❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 # Carrega as variáveis de ambiente
-load_dotenv('db.env')
+load_dotenv(r'C:\Users\pytho\Documents\GitHub\GS-ADS-DOS-CRIA\AI & CHATBOT\MRI\API\db.env')
 
 
 
@@ -237,12 +237,12 @@ class Prediagnostico:
 
 
 
-# Exemplo de Uso
-dados_consulta = (1, '2023-01-01', '10:00', 1, 1)
-Consulta.criar_consulta(dados_consulta)
-dados_paciente = (1, 'Nome do Paciente', '12345678901', '1990-01-01', 'M', 'paciente@example.com', '123-456-7890', 'Rua do Paciente', 'Bairro', '12345-678', 'Complemento', '123', 'UF', 'Cidade', 'Plano de Saúde', 'Histórico Médico')
-Paciente.criar_paciente(dados_paciente)
-dados_medico = (1, 'Nome do Médico', 'medico@example.com', '12345', 'Especialidade', '987-654-3210', 'Rua do Médico', 'Bairro', '54321-876', 'Complemento', '321', 'UF', 'Cidade', 1, 1)
-Medico.criar_medico(dados_medico)
-dados_prediagnostico = (1, 'Descrição', '2023-01-01', 'Resultado', 'Tratamento', 'Setor', 'Observações', 1, 1)
-Prediagnostico.criar_prediagnostico(dados_prediagnostico)
+# # Exemplo de Uso
+# dados_consulta = (1, '2023-01-01', '10:00', 1, 1)
+# Consulta.criar_consulta(dados_consulta)
+# dados_paciente = (1, 'Nome do Paciente', '12345678901', '1990-01-01', 'M', 'paciente@example.com', '123-456-7890', 'Rua do Paciente', 'Bairro', '12345-678', 'Complemento', '123', 'UF', 'Cidade', 'Plano de Saúde', 'Histórico Médico')
+# Paciente.criar_paciente(dados_paciente)
+# dados_medico = (1, 'Nome do Médico', 'medico@example.com', '12345', 'Especialidade', '987-654-3210', 'Rua do Médico', 'Bairro', '54321-876', 'Complemento', '321', 'UF', 'Cidade', 1, 1)
+# Medico.criar_medico(dados_medico)
+# dados_prediagnostico = (1, 'Descrição', '2023-01-01', 'Resultado', 'Tratamento', 'Setor', 'Observações', 1, 1)
+# Prediagnostico.criar_prediagnostico(dados_prediagnostico)

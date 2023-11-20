@@ -1,9 +1,8 @@
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━❮Bibliotecas❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 import numpy as np
 import cv2
-import database as db
 from flask import Flask, request, jsonify, send_from_directory, Response
-from database import get_db_connection
+from database import ConexaoBancoDados, Consulta, Paciente, Medico, Prediagnostico as db
 from prediction_model import predict_tumor_type
 
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━❮◆❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -53,26 +52,29 @@ def initialize_routes(app):
     @app.route('/consulta/create', methods=['POST'])
     def create_consulta_route():
         data = request.json
-        db.create_consulta(data)
+        db.criar_consulta(data)
         return jsonify({"message": "Consulta criada com sucesso!"}), 201
 
-    # Rota para ler todas as consultas
     @app.route('/consulta/read', methods=['GET'])
     def read_consultas_route():
-        consultas = db.read_consultas()
+        with ConexaoBancoDados() as conexao:
+            consultas = Consulta.ler_consultas()
         return jsonify(consultas), 200
+
+
+
 
     # Rota para atualizar uma consulta
     @app.route('/consulta/update/<int:id>', methods=['PUT'])
     def update_consulta_route(id):
         data = request.json
-        dc.update_consulta(id, data)
+        db.atualizar_consulta(id, data)
         return jsonify({"message": "Consulta atualizada com sucesso!"}), 200
 
     # Rota para deletar uma consulta
     @app.route('/consulta/delete/<int:id>', methods=['DELETE'])
     def delete_consulta_route(id):
-        db.delete_consulta(id)
+        db.excluir_consulta(id)
         return jsonify({"message": "Consulta deletada com sucesso!"}), 200
 
 
@@ -82,23 +84,23 @@ def initialize_routes(app):
     @app.route('/paciente/create', methods=['POST'])
     def create_paciente_route():
         data = request.json
-        db.create_paciente(data)
+        db.criar_paciente(data)
         return jsonify({"message": "Paciente criado com sucesso!"}), 201
 
     @app.route('/paciente/read', methods=['GET'])
     def read_pacientes_route():
-        pacientes = db.read_pacientes()
+        pacientes = db.ler_pacientes()
         return jsonify(pacientes), 200
 
     @app.route('/paciente/update/<int:id>', methods=['PUT'])
     def update_paciente_route(id):
         data = request.json
-        db.update_paciente(id, data)
+        db.atualizar_paciente(id, data)
         return jsonify({"message": "Paciente atualizado com sucesso!"}), 200
 
     @app.route('/paciente/delete/<int:id>', methods=['DELETE'])
     def delete_paciente_route(id):
-        db.delete_paciente(id)
+        db.excluir_paciente(id)
         return jsonify({"message": "Paciente deletado com sucesso!"}), 200
 
 
@@ -107,23 +109,23 @@ def initialize_routes(app):
     @app.route('/medico/create', methods=['POST'])
     def create_medico_route():
         data = request.json
-        db.create_medico(data)
+        db.criar_medico(data)
         return jsonify({"message": "Médico criado com sucesso!"}), 201
 
     @app.route('/medico/read', methods=['GET'])
     def read_medicos_route():
-        medicos = db.read_medicos()
+        medicos = db.ler_medicos()
         return jsonify(medicos), 200
 
     @app.route('/medico/update/<int:id>', methods=['PUT'])
     def update_medico_route(id):
         data = request.json
-        db.update_medico(id, data)
+        db.atualizar_medico(id, data)
         return jsonify({"message": "Médico atualizado com sucesso!"}), 200
 
     @app.route('/medico/delete/<int:id>', methods=['DELETE'])
     def delete_medico_route(id):
-        db.delete_medico(id)
+        db.excluir_medico(id)
         return jsonify({"message": "Médico deletado com sucesso!"}), 200
 
 
@@ -134,26 +136,30 @@ def initialize_routes(app):
     @app.route('/prediagnostico/create', methods=['POST'])
     def create_prediagnostico_route():
         data = request.json
-        db.create_prediagnostico(data)
+        db.criar_prediagnostico(data)
         return jsonify({"message": "Pré-diagnóstico criado com sucesso!"}), 201
 
     # Rota para ler todos os pré-diagnósticos
     @app.route('/prediagnostico/read', methods=['GET'])
     def read_prediagnosticos_route():
-        prediagnosticos = db.read_prediagnosticos()
+        prediagnosticos = db.ler_prediagnosticos()
         return jsonify(prediagnosticos), 200
+
+
+
+
 
     # Rota para atualizar um pré-diagnóstico
     @app.route('/prediagnostico/update/<int:id>', methods=['PUT'])
     def update_prediagnostico_route(id):
         data = request.json
-        db.update_prediagnostico(id, data)
+        db.atualizar_prediagnostico(id, data)
         return jsonify({"message": "Pré-diagnóstico atualizado com sucesso!"}), 200
 
     # Rota para deletar um pré-diagnóstico
     @app.route('/prediagnostico/delete/<int:id>', methods=['DELETE'])
     def delete_prediagnostico_route(id):
-        db.delete_prediagnostico(id)
+        db.excluir_prediagnostico(id)
         return jsonify({"message": "Pré-diagnóstico deletado com sucesso!"}), 200
 
     #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━❮◆❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
