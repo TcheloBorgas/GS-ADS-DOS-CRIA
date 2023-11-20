@@ -14,7 +14,7 @@ import java.security.PublicKey;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity(name= "Paciente")
-@Table(name= "pacientes")
+@Table(name= "paciente")
 public class Paciente {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
