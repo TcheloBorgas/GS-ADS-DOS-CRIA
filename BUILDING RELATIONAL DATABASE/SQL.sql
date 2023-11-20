@@ -1,8 +1,8 @@
--- Henry Komatsu - 
+-- Henry Komatsu 
 -- Macelo Henrique - RM98893
 -- Marcel P. Soddano - RM99841
 -- Nicolas E. Inohue - RM98057
--- Ricardo Brito - 
+-- Ricardo Brito 
 
 DROP TABLE paciente;
 DROP TABLE medico;
