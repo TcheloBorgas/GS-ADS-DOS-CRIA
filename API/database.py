@@ -129,6 +129,21 @@ class Paciente:
                 conexao.commit()
         except cx_Oracle.DatabaseError as e:
             print("Erro ao excluir paciente:", e)
+            
+            
+    @staticmethod
+    def email_existe(email):
+        try:
+            with ConexaoBancoDados() as conexao:
+                with conexao.cursor() as cursor:
+                    cursor.execute("SELECT COUNT(*) FROM paciente WHERE email = :1", (email,))
+                    (count,) = cursor.fetchone()
+                    return count > 0
+        except cx_Oracle.DatabaseError as e:
+            print("Erro ao verificar email:", e)
+            return False
+
+    
 
 
 
@@ -180,9 +195,34 @@ class Medico:
                 conexao.commit()
         except cx_Oracle.DatabaseError as e:
             print("Erro ao excluir médico:", e)
+    
+    
+    @staticmethod
+    def email_existe(email):
+        try:
+            with ConexaoBancoDados() as conexao:
+                with conexao.cursor() as cursor:
+                    cursor.execute("SELECT COUNT(*) FROM medico WHERE email = :1", (email,))
+                    (count,) = cursor.fetchone()
+                    return count > 0
+        except cx_Oracle.DatabaseError as e:
+            print("Erro ao verificar email:", e)
+            return False
+
 
 
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━❮Prediagnostico❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+class MRIAnalysis:
+    @staticmethod
+    def salvar_analise(image_path, tumor_probability, tumor_type):
+        try:
+            with ConexaoBancoDados() as conexao:
+                with conexao.cursor() as cursor:
+                    query = "INSERT INTO mri_analyses (image_path, tumor_probability, tumor_type) VALUES (:1, :2, :3)"
+                    cursor.execute(query, (image_path, tumor_probability, tumor_type))
+                conexao.commit()
+        except cx_Oracle.DatabaseError as e:
+            print("Erro ao salvar análise de MRI:", e)
 
 
 
@@ -236,13 +276,3 @@ class Prediagnostico:
 
 
 
-
-# # Exemplo de Uso
-# dados_consulta = (1, '2023-01-01', '10:00', 1, 1)
-# Consulta.criar_consulta(dados_consulta)
-# dados_paciente = (1, 'Nome do Paciente', '12345678901', '1990-01-01', 'M', 'paciente@example.com', '123-456-7890', 'Rua do Paciente', 'Bairro', '12345-678', 'Complemento', '123', 'UF', 'Cidade', 'Plano de Saúde', 'Histórico Médico')
-# Paciente.criar_paciente(dados_paciente)
-# dados_medico = (1, 'Nome do Médico', 'medico@example.com', '12345', 'Especialidade', '987-654-3210', 'Rua do Médico', 'Bairro', '54321-876', 'Complemento', '321', 'UF', 'Cidade', 1, 1)
-# Medico.criar_medico(dados_medico)
-# dados_prediagnostico = (1, 'Descrição', '2023-01-01', 'Resultado', 'Tratamento', 'Setor', 'Observações', 1, 1)
-# Prediagnostico.criar_prediagnostico(dados_prediagnostico)
