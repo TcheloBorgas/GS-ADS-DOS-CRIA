@@ -46,7 +46,6 @@
 <createdTime>2023-11-20 21:40:24 UTC</createdTime>
 <generatorID>F09A125D-CC8A-0BA8-DDEC-7826B7AF7B19</generatorID>
 <ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
@@ -62,7 +61,6 @@
 <createdTime>2023-11-20 21:40:24 UTC</createdTime>
 <generatorID>836A3C87-4441-3C51-A35D-5590D4CE28F8</generatorID>
 <ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
@@ -88,21 +86,6 @@
 <colAssociation fkAssociation="05B68595-6582-4F43-802F-E9327B92DB5A" referredColumn="3F02F9EC-5DA8-927C-3D8E-EA12B0CC20FA"/>
 </associations>
 </Column>
-<Column name="exame_mri_id" id="63548208-6EA2-5748-045D-28D901B1D50F">
-<createdBy>nicni</createdBy>
-<createdTime>2023-11-21 22:49:29 UTC</createdTime>
-<generatorID>5358BFC6-3E85-E069-21B9-CABFA8EB1E88</generatorID>
-<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<previousColumn>false</previousColumn>
-<autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="A1D1E09B-62E2-3ABA-86D9-0AED8E5AB9C7" referredColumn="E1DDF40B-8E19-8686-1DEC-6BB31050BA97"/>
-</associations>
-</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="7C53DDF1-6FF5-EFD6-49B0-0BD2F1B60C93" name="consulta_PK">
@@ -115,17 +98,6 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="5F64701B-33E5-F0AC-04EC-9A58506C14DE"/>
-</indexColumnUsage>
-</ind_PK_UK>
-<ind_PK_UK id="C95FF00E-020C-AEE3-EB0F-E6122E52ACC9" name="consulta__IDX">
-<createdBy>nicni</createdBy>
-<createdTime>2023-11-21 22:49:29 UTC</createdTime>
-<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
-<indexState>Unique Plain Index</indexState>
-<isSurrogateKey>false</isSurrogateKey>
-<relationGeneratorID>1E224CAB-846D-0805-3553-4C63688CD2AB</relationGeneratorID>
-<indexColumnUsage>
-<colUsage columnID="63548208-6EA2-5748-045D-28D901B1D50F"/>
 </indexColumnUsage>
 </ind_PK_UK>
 <ind_PK_UK id="A574294A-2620-C4FB-0873-7BAEB6F71E42" name="consulta_medico_FK">
@@ -159,17 +131,6 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="8F76D2D7-FE80-DF80-24C7-78F5380B521B"/>
-</indexColumnUsage>
-</ind_PK_UK>
-<ind_PK_UK id="5267F1F0-9B59-45AF-E51D-F75557DD8A73" name="consulta_exame_mri_FK">
-<createdBy>nicni</createdBy>
-<createdTime>2023-11-21 22:49:29 UTC</createdTime>
-<generatorID>1E224CAB-846D-0805-3553-4C63688CD2AB</generatorID>
-<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
-<indexState>Foreign Key</indexState>
-<isSurrogateKey>false</isSurrogateKey>
-<indexColumnUsage>
-<colUsage columnID="63548208-6EA2-5748-045D-28D901B1D50F"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

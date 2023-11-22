@@ -9,8 +9,8 @@
 <sourcePk>69202079-1658-32F4-B486-304CF86D30B7</sourcePk>
 <targetPk>D6085F87-495F-8F48-73C8-F49BB8FD6E20</targetPk>
 <identifying>false</identifying>
-<optionalSource>false</optionalSource>
-<optionalTarget>true</optionalTarget>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
 <sourceCardinality>1</sourceCardinality>
 <sourceEntity>8B2BB5A9-2C96-EE2A-438A-A76C5980A936</sourceEntity>
 <targetCardinalityString>1</targetCardinalityString>

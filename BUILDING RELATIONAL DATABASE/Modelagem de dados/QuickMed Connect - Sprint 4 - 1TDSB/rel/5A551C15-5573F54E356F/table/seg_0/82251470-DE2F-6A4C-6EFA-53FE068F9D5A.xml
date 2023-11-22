@@ -125,21 +125,21 @@
 <isSurrogateKey>false</isSurrogateKey>
 <relationGeneratorID>8E1898FC-225B-D87F-AA34-C7283B087202</relationGeneratorID>
 </ind_PK_UK>
-<ind_PK_UK id="FC84C507-62DA-FCB9-AFC4-39D8A642F005" name="endereco__IDXv2">
+<ind_PK_UK id="CF777ABE-D94E-02F0-6504-1012F09F6B5D" name="endereco__IDXv1">
 <createdBy>nicni</createdBy>
-<createdTime>2023-11-21 22:52:15 UTC</createdTime>
-<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
-<indexState>Unique Plain Index</indexState>
-<isSurrogateKey>false</isSurrogateKey>
-<relationGeneratorID>16FBD9B9-2C44-281F-A028-CB9568F2E98B</relationGeneratorID>
-</ind_PK_UK>
-<ind_PK_UK id="1D9D95DD-686D-8FB4-A6C5-CCC185285923" name="endereco__IDX">
-<createdBy>nicni</createdBy>
-<createdTime>2023-11-21 22:52:15 UTC</createdTime>
+<createdTime>2023-11-22 02:35:36 UTC</createdTime>
 <ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
 <indexState>Unique Plain Index</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <relationGeneratorID>4E1B385D-C031-85A5-AE5B-709D6457DFDF</relationGeneratorID>
+</ind_PK_UK>
+<ind_PK_UK id="B4B016D6-CA22-E547-6AE2-61970598F3E3" name="endereco__IDX">
+<createdBy>nicni</createdBy>
+<createdTime>2023-11-22 02:35:36 UTC</createdTime>
+<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>16FBD9B9-2C44-281F-A028-CB9568F2E98B</relationGeneratorID>
 </ind_PK_UK>
 </indexes>
 </Table>

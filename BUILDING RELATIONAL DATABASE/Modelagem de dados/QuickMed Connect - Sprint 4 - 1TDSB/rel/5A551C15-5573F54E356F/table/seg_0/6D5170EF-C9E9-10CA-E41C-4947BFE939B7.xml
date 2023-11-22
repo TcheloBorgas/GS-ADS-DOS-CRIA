@@ -72,6 +72,21 @@
 <colAssociation fkAssociation="EE89C8EA-D6E8-CC5A-FE66-7CA25B91E616" referredColumn="7F1E57B1-CF1C-5339-2C54-D047E4EDB460"/>
 </associations>
 </Column>
+<Column name="consulta_id" id="C083822B-3EEE-08A3-BE90-E8F3CFB1775F">
+<createdBy>nicni</createdBy>
+<createdTime>2023-11-22 02:35:36 UTC</createdTime>
+<generatorID>BA7B37F4-F921-122B-DFE6-77888EDDE511</generatorID>
+<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="F144302E-80B6-5108-A281-A9491FC97EA0" referredColumn="5F64701B-33E5-F0AC-04EC-9A58506C14DE"/>
+</associations>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="C35215D4-CC17-53E9-144B-09953F2FA997" name="exame_mri_PK">
@@ -86,6 +101,17 @@
 <colUsage columnID="E1DDF40B-8E19-8686-1DEC-6BB31050BA97"/>
 </indexColumnUsage>
 </ind_PK_UK>
+<ind_PK_UK id="97591473-776A-0714-F5A0-65ED03A12859" name="exame_mri__IDX">
+<createdBy>nicni</createdBy>
+<createdTime>2023-11-22 02:35:36 UTC</createdTime>
+<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>1E224CAB-846D-0805-3553-4C63688CD2AB</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="C083822B-3EEE-08A3-BE90-E8F3CFB1775F"/>
+</indexColumnUsage>
+</ind_PK_UK>
 <ind_PK_UK id="C5C5FE01-4EFA-B0F8-CA99-880EAE46FF9D" name="exame_mri_paciente_FK">
 <createdBy>nicni</createdBy>
 <createdTime>2023-11-21 21:02:27 UTC</createdTime>
@@ -95,6 +121,17 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="D4EF212B-7EA5-3579-7380-55209A517F4F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="022F5017-1B8A-87EE-2013-16CEF6C0E961" name="exame_mri_consulta_FK">
+<createdBy>nicni</createdBy>
+<createdTime>2023-11-22 02:35:36 UTC</createdTime>
+<generatorID>1E224CAB-846D-0805-3553-4C63688CD2AB</generatorID>
+<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C083822B-3EEE-08A3-BE90-E8F3CFB1775F"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

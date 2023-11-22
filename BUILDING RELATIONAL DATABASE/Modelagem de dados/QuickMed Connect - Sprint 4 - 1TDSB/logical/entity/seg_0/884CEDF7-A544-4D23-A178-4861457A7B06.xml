@@ -82,6 +82,20 @@
 <logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="id1" id="BA7B37F4-F921-122B-DFE6-77888EDDE511">
+<createdBy>nicni</createdBy>
+<createdTime>2023-11-22 02:34:54 UTC</createdTime>
+<generatorID>1E224CAB-846D-0805-3553-4C63688CD2AB</generatorID>
+<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
+<engineerTo>
+<item key="5A551C15-CD3B-1602-BEDA-5573F54E356F" value="true"/>
+</engineerTo>
+<referedAttribute>34A65460-EFB6-B7E4-0C8E-0751CDE7C158</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="D6085F87-495F-8F48-73C8-F49BB8FD6E20" name="exame_mri_PK">

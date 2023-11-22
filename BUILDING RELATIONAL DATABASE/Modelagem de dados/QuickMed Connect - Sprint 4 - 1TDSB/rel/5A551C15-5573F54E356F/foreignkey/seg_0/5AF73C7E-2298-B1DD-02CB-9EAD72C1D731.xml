@@ -9,7 +9,7 @@
 <referredTableID>49FBBBE7-9D55-AE61-24A8-97BA226359C7</referredTableID>
 <keyObject>A462F96E-9D38-A8F8-7596-856F301CAE92</keyObject>
 <referredKeyID>A462F96E-9D38-A8F8-7596-856F301CAE92</referredKeyID>
-<mandatory>false</mandatory>
+<mandatory>true</mandatory>
 <refColNames>id</refColNames>
 <transferable>true</transferable>
 <rely>false</rely>

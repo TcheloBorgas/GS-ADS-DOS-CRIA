@@ -90,18 +90,6 @@
 <ownDataTypeParameters>20 CHAR,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="numero" id="4E7C0439-AF40-878F-C29D-339A953AED60">
-<createdBy>nicni</createdBy>
-<createdTime>2023-11-20 21:40:24 UTC</createdTime>
-<generatorID>A1F36AD5-97D5-3723-D4B5-1D95F01B5753</generatorID>
-<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>20 CHAR</dataTypeSize>
-<ownDataTypeParameters>20 CHAR,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
 <Column name="historico_medico" id="22E27DAC-9763-D03B-9925-BAF9FA5599D3">
 <createdBy>nicni</createdBy>
 <createdTime>2023-11-20 21:40:24 UTC</createdTime>
@@ -113,21 +101,6 @@
 <dataTypeSize>500 CHAR</dataTypeSize>
 <ownDataTypeParameters>500 CHAR,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
-</Column>
-<Column name="plano_saude_id" id="6164813A-E430-E7F9-EF56-03D43411C6ED">
-<createdBy>nicni</createdBy>
-<createdTime>2023-11-21 22:57:53 UTC</createdTime>
-<generatorID>435C6335-F7BD-0FB5-8EAF-728D8C1595D3</generatorID>
-<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<previousColumn>false</previousColumn>
-<autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="F040C052-8DBC-5CA5-957E-E08F62A4FEE3" referredColumn="C48FD55E-5209-10E7-D43A-80F03F03EC83"/>
-</associations>
 </Column>
 <Column name="endereco_id" id="1A78D48B-398B-5D0C-564E-749C008DE763">
 <createdBy>nicni</createdBy>
@@ -169,17 +142,6 @@
 <colUsage columnID="1A78D48B-398B-5D0C-564E-749C008DE763"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="DDE108ED-AA2B-A121-DD5C-7577ABA4897D" name="paciente__IDX">
-<createdBy>nicni</createdBy>
-<createdTime>2023-11-21 22:57:53 UTC</createdTime>
-<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
-<indexState>Unique Plain Index</indexState>
-<isSurrogateKey>false</isSurrogateKey>
-<relationGeneratorID>3F201829-0B92-4869-DD0C-885AFEFAFBAB</relationGeneratorID>
-<indexColumnUsage>
-<colUsage columnID="6164813A-E430-E7F9-EF56-03D43411C6ED"/>
-</indexColumnUsage>
-</ind_PK_UK>
 <ind_PK_UK id="B833F1E9-DA52-4491-D232-228304B6AF31" name="paciente_endereco_FK">
 <createdBy>nicni</createdBy>
 <createdTime>2023-11-21 22:57:53 UTC</createdTime>
@@ -189,17 +151,6 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="1A78D48B-398B-5D0C-564E-749C008DE763"/>
-</indexColumnUsage>
-</ind_PK_UK>
-<ind_PK_UK id="5E79682F-326C-2B5B-9D83-F7E01132BCA1" name="paciente_plano_saude_FK">
-<createdBy>nicni</createdBy>
-<createdTime>2023-11-21 22:57:53 UTC</createdTime>
-<generatorID>3F201829-0B92-4869-DD0C-885AFEFAFBAB</generatorID>
-<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
-<indexState>Foreign Key</indexState>
-<isSurrogateKey>false</isSurrogateKey>
-<indexColumnUsage>
-<colUsage columnID="6164813A-E430-E7F9-EF56-03D43411C6ED"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>
