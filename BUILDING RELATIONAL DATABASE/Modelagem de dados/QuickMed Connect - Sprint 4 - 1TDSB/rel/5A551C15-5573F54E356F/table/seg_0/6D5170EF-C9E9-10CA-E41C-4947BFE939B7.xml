@@ -1,0 +1,101 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="6D5170EF-C9E9-10CA-E41C-4947BFE939B7" name="exame_mri">
+<createdBy>nicni</createdBy>
+<createdTime>2023-11-21 21:02:27 UTC</createdTime>
+<generatorID>884CEDF7-A544-4D23-A178-4861457A7B06</generatorID>
+<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="E1DDF40B-8E19-8686-1DEC-6BB31050BA97">
+<createdBy>nicni</createdBy>
+<createdTime>2023-11-21 21:02:27 UTC</createdTime>
+<generatorID>F554E183-C374-87A4-5ADD-35677077BB9D</generatorID>
+<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="image_path" id="3B70DEF4-0ACF-9AF0-D005-366E42F24885">
+<createdBy>nicni</createdBy>
+<createdTime>2023-11-21 21:02:27 UTC</createdTime>
+<generatorID>6D27E5F1-754A-450A-2543-B4FED1464368</generatorID>
+<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>300 CHAR</dataTypeSize>
+<ownDataTypeParameters>300 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="tumor_type" id="15EC215F-7B96-42AA-F158-7F09B75648FD">
+<createdBy>nicni</createdBy>
+<createdTime>2023-11-21 21:02:27 UTC</createdTime>
+<generatorID>056C16A7-3ABF-1931-CDD8-1BFE27559096</generatorID>
+<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>300 CHAR</dataTypeSize>
+<ownDataTypeParameters>300 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="tumor_probability" id="3C211AC3-7A04-E187-6036-6AE496023E09">
+<createdBy>nicni</createdBy>
+<createdTime>2023-11-21 21:02:27 UTC</createdTime>
+<generatorID>FD72B1C6-B717-2C7B-E329-344941251D50</generatorID>
+<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,6,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="paciente_id" id="D4EF212B-7EA5-3579-7380-55209A517F4F">
+<createdBy>nicni</createdBy>
+<createdTime>2023-11-21 21:02:27 UTC</createdTime>
+<generatorID>12635BA8-DA81-A493-20BC-F25B5F2CC926</generatorID>
+<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="EE89C8EA-D6E8-CC5A-FE66-7CA25B91E616" referredColumn="7F1E57B1-CF1C-5339-2C54-D047E4EDB460"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="C35215D4-CC17-53E9-144B-09953F2FA997" name="exame_mri_PK">
+<createdBy>nicni</createdBy>
+<createdTime>2023-11-21 21:02:27 UTC</createdTime>
+<generatorID>D6085F87-495F-8F48-73C8-F49BB8FD6E20</generatorID>
+<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E1DDF40B-8E19-8686-1DEC-6BB31050BA97"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="C5C5FE01-4EFA-B0F8-CA99-880EAE46FF9D" name="exame_mri_paciente_FK">
+<createdBy>nicni</createdBy>
+<createdTime>2023-11-21 21:02:27 UTC</createdTime>
+<generatorID>3D3F2E05-A259-F518-C452-533F081485E3</generatorID>
+<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D4EF212B-7EA5-3579-7380-55209A517F4F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

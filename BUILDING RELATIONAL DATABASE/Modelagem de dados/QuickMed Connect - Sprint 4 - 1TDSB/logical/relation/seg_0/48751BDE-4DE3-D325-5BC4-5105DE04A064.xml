@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="consulta medico FK" directorySegmentName="seg_0" id="48751BDE-4DE3-D325-5BC4-5105DE04A064">
+<createdBy>nicni</createdBy>
+<createdTime>2023-11-20 21:29:35 UTC</createdTime>
+<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
+<engineerTo>
+<item key="5A551C15-CD3B-1602-BEDA-5573F54E356F" value="true"/>
+</engineerTo>
+<sourcePk>05CE0201-8D06-DCD1-A36C-CC96A6A532AC</sourcePk>
+<identifying>false</identifying>
+<optionalSource>false</optionalSource>
+<optionalTarget>true</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>94CAF82D-187F-7CF1-3C82-7DC144E5F0E2</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>8B2BB5A9-2C96-EE2A-438A-A76C5980A936</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

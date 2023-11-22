@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="exame sangue consulta FK" directorySegmentName="seg_0" id="83E8171B-84E5-58CA-6164-070CD2AAF4B7">
+<createdBy>nicni</createdBy>
+<createdTime>2023-11-21 20:42:04 UTC</createdTime>
+<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
+<engineerTo>
+<item key="5A551C15-CD3B-1602-BEDA-5573F54E356F" value="true"/>
+</engineerTo>
+<sourcePk>69202079-1658-32F4-B486-304CF86D30B7</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>8B2BB5A9-2C96-EE2A-438A-A76C5980A936</sourceEntity>
+<targetCardinalityString>1</targetCardinalityString>
+<targetEntity>4C895A12-7CCE-61B4-D079-2E65770B1CCC</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

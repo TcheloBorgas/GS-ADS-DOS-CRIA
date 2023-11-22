@@ -1,0 +1,49 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="838265B1-8858-4806-6A8F-7318E445C2AC" name="especialidade">
+<createdBy>nicni</createdBy>
+<createdTime>2023-11-21 21:02:27 UTC</createdTime>
+<generatorID>389DD863-2D1C-BFDC-FC9C-617B154EB9D7</generatorID>
+<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="B84142D1-CD0B-6D33-28BB-F32D708697BA">
+<createdBy>nicni</createdBy>
+<createdTime>2023-11-21 21:02:27 UTC</createdTime>
+<generatorID>736952A4-2E1A-C269-F37B-57EA59AD39B2</generatorID>
+<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nome" id="6923B708-83A9-BDB7-DE1B-B8F8F9735D5C">
+<createdBy>nicni</createdBy>
+<createdTime>2023-11-21 21:02:27 UTC</createdTime>
+<generatorID>B7D8053E-CB14-8FC2-CE35-73835C8A6925</generatorID>
+<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 CHAR</dataTypeSize>
+<ownDataTypeParameters>100 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="D0E510AC-AD9E-1BEC-9DCA-2D3611C50217" name="especialidade_PK">
+<createdBy>nicni</createdBy>
+<createdTime>2023-11-21 21:02:27 UTC</createdTime>
+<generatorID>166F82E7-8727-6925-A9E5-4A42592C5AA4</generatorID>
+<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B84142D1-CD0B-6D33-28BB-F32D708697BA"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

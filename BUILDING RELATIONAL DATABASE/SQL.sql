@@ -6,6 +6,11 @@
 
 DROP TABLE paciente;
 DROP TABLE medico;
+DROP TABLE endereco;
+DROP TABLE especialidade;
+DROP TABLE plano_saude;
+DROP TABLE exame_sangue;
+DROP TABLE exame_mri;
 DROP TABLE consulta;
 DROP TABLE prediagnostico;
 
@@ -25,15 +30,6 @@ CREATE TABLE paciente (
     sexo VARCHAR2(10) CONSTRAINT sexo_paciente_nn NOT NULL,
     email VARCHAR2(100) CONSTRAINT email_paciente_nn NOT NULL,
     telefone VARCHAR2(20) CONSTRAINT telefone_paciente_nn NOT NULL,
-    logradouro VARCHAR2(100) CONSTRAINT endereco_paciente_nn NOT NULL,
-    bairro VARCHAR2(100) CONSTRAINT bairro_paciente_nn NOT NULL,
-    cep VARCHAR2(9) CONSTRAINT cep_paciente_nn NOT NULL,
-    complemento VARCHAR2(100) CONSTRAINT complemento_paciente_nn NOT NULL,
-    numero VARCHAR2(20) CONSTRAINT numero_paciente_nn NOT NULL,
-    uf VARCHAR2(2) CONSTRAINT uf_paciente_nn NOT NULL,
-    cidade VARCHAR2(100) CONSTRAINT cidade_paciente_nn NOT NULL,
-    sintoma VARCHAR(100) CONSTRAINT sintoma_paciente_nn NOT NULL,
-    plano_saude VARCHAR2(100) CONSTRAINT plano_de_saude_paciente_nn NOT NULL,
     historico_medico VARCHAR2(500) CONSTRAINT historico_medico_paciente_nn NOT NULL,
     consulta_id NUMBER
 );
@@ -43,17 +39,47 @@ CREATE TABLE medico (
     nome VARCHAR2(100) CONSTRAINT nome_medico_nn NOT NULL,
     email varchar2(100) CONSTRAINT email_medico_nn_uk NOT NULL UNIQUE,
     crm VARCHAR2(8) CONSTRAINT crm_medico_nn_uk NOT NULL UNIQUE,
-    especialidade VARCHAR2(100) CONSTRAINT especialidade_medico_nn NOT NULL,
     telefone VARCHAR2(20) CONSTRAINT telefone_medico_nn NOT NULL,
-    logradouro VARCHAR2(100) CONSTRAINT logradouro_medico_nn NOT NULL,
-    bairro VARCHAR(100) CONSTRAINT bairro_medico_nn NOT NULL,
-    cep VARCHAR(9) CONSTRAINT cep_medico_nn NOT NULL,
-    complemento VARCHAR2(100) CONSTRAINT complemento_medico_nn NOT NULL,
-    numero VARCHAR2(20) CONSTRAINT numero_medico_nn NOT NULL,
-    uf VARCHAR2(2) CONSTRAINT uf_medico_nn NOT NULL,
-    cidade VARCHAR2(100) CONSTRAINT cidade_medico_nn NOT NULL,
     consulta_id NUMBER,
     prediagnostico_id NUMBER
+);
+
+CREATE TABLE endereco (
+    id NUMBER CONSTRAINT id_endereco_pk PRIMARY KEY,
+    logradouro VARCHAR2(100) CONSTRAINT endereco_endereco_nn NOT NULL,
+    bairro VARCHAR2(100) CONSTRAINT bairro_endereco_nn NOT NULL,
+    cep VARCHAR2(9) CONSTRAINT cep_endereco_nn NOT NULL,
+    complemento VARCHAR2(100) CONSTRAINT complemento_endereco_nn NOT NULL,
+    numero VARCHAR2(20) CONSTRAINT numero_endereco_nn NOT NULL,
+    uf VARCHAR2(2) CONSTRAINT uf_endereco_nn NOT NULL,
+    cidade VARCHAR2(100) CONSTRAINT cidade_endereco_nn NOT NULL,
+);
+
+CREATE TABLE especialidade (
+    id NUMBER CONSTRAINT id_especialidade_pk PRIMARY KEY,
+    nome VARCHAR(100) CONSTRAINT nome_especialidade_nn NOT NULL
+);
+
+CREATE TABLE plano_saude (
+    id NUMBER CONSTRAINT id_planosaude_pk PRIMARY KEY,
+    nome VARCHAR(255) CONSTRAINT nome_planosaude_nn NOT NULL,
+    descricao VARCHAR2(300) CONSTRAINT descricao_planosaude_nn NOT NULL,
+);
+
+CREATE TABLE exame_sangue (
+    id NUMBER CONSTRAINT id_examesangue_pk PRIMARY KEY,
+    leukocytes FLOAT(6) CONSTRAINT leukocytes_examesangue_nn NOT NULL,
+    platelets FLOAT(6), CONSTRAINT platelets_examesangue_nn NOT NULL,
+    mean_platelet_volume FLOAT(6) CONSTRAINT meanplatvol_examesangue_nn NOT NULL,
+    eosinophils FLOAT(6) CONSTRAINT eosinophils_examesangue_nn NOT NULL,
+    proteinac_reativa FLOAT(6) CONSTRAINT proteinac_examesangue_nn NOT NULL,
+);
+
+CREATE TABLE exame_mri (
+    id NUMBER CONSTRAINT id_examemri_pk PRIMARY KEY,
+    image_path VARCHAR2(300) CONSTRAINT imagepath_examemri_nn NOT NULL,
+    tumor_type VARCHAR2(300) CONSTRAINT tumortype_examemri_nn NOT NULL,
+    tumor_probability FLOAT(6) CONSTRAINT tumorprob_examemri_nn NOT NULL,
 );
 
 CREATE TABLE prediagnostico (
@@ -73,11 +99,26 @@ CREATE TABLE prediagnostico (
 ALTER TABLE paciente
 ADD CONSTRAINT fk_paciente_consulta FOREIGN KEY (consulta_id) REFERENCES consulta (id);
 
+ALTER TABLE paciente
+ADD CONSTRAINT fk_paciente_endereco FOREIGN KEY (id_endereco) REFERENCES endereco(id);
+
+ALTER TABLE paciente
+ADD CONSTRAINT fk_paciente_planosaude FOREIGN KEY (id_planosaude) REFERENCES plano_saude(id);
+
 ALTER TABLE consulta
 ADD CONSTRAINT fk_consulta_paciente FOREIGN KEY (paciente_id) REFERENCES paciente (id);
 
 ALTER TABLE consulta
 ADD CONSTRAINT fk_consulta_medico FOREIGN KEY (medico_id) REFERENCES medico (id);
+
+ALTER TABLE consulta
+ADD CONSTRAINT fk_consulta_paciente FOREIGN KEY (id_paciente) REFERENCES paciente(id);
+
+ALTER TABLE consulta
+ADD CONSTRAINT fk_consulta_medico FOREIGN KEY (id_medico) REFERENCES medico(id);
+
+ALTER TABLE consulta
+ADD CONSTRAINT fk_consulta_prediagnostico FOREIGN KEY (id_prediagnostico) REFERENCES prediagnostico(id);
 
 ALTER TABLE medico
 ADD CONSTRAINT fk_medico_consulta FOREIGN KEY (consulta_id) REFERENCES consulta (id);
@@ -85,11 +126,30 @@ ADD CONSTRAINT fk_medico_consulta FOREIGN KEY (consulta_id) REFERENCES consulta 
 ALTER TABLE medico
 ADD CONSTRAINT fk_medico_diagnostico FOREIGN KEY (prediagnostico_id) REFERENCES prediagnostico (id);
 
+ALTER TABLE medico
+ADD CONSTRAINT fk_medico_endereco FOREIGN KEY (id_endereco) REFERENCES endereco(id);
+
+ALTER TABLE medico
+ADD CONSTRAINT fk_medico_especialidade FOREIGN KEY (id_especialidade) REFERENCES especialidade(id);
+
 ALTER TABLE prediagnostico
 ADD CONSTRAINT fk_prediagnostico_paciente FOREIGN KEY (paciente_id) REFERENCES paciente (id);
 
 ALTER TABLE prediagnostico
 ADD CONSTRAINT fk_prediagnostico_medico FOREIGN KEY (medico_id) REFERENCES medico (id);
+
+ALTER TABLE exame_sangue
+ADD CONSTRAINT fk_examesangue_paciente
+FOREIGN KEY (id_paciente) REFERENCES paciente(id);
+
+ALTER TABLE exame_sangue
+ADD CONSTRAINT fk_examesangue_consulta FOREIGN KEY (id_consulta) REFERENCES consulta(id);
+
+ALTER TABLE exame_mri
+ADD CONSTRAINT fk_examemri_paciente FOREIGN KEY (id_paciente) REFERENCES paciente(id);
+
+ALTER TABLE exame_mri
+ADD CONSTRAINT fk_examemri_consulta FOREIGN KEY (id_consulta) REFERENCES consulta(id);
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 -- Inserindo dados na tabela Consulta
@@ -124,7 +184,7 @@ INSERT INTO consulta (id, data_consulta, horario_consulta)
 VALUES (10, TO_DATE('2023-11-26', 'YYYY-MM-DD'), TO_DATE('2023-11-26 11:00:00', 'YYYY-MM-DD HH24:MI:SS'));
 
 -- Inserindo dados na tabela Paciente
-INSERT INTO paciente (id, nome, cpf, dt_nascimento, sexo, logradouro, numero, bairro, cep, complemento, uf, cidade, telefone, email, plano_saude, historico_medico)
+INSERT INTO paciente (id, nome, cpf, dt_nascimento, sexo, telefone, email, historico_medico)
 VALUES (101, 'John Doe', '12345678901', TO_DATE('1990-01-01', 'YYYY-MM-DD'), 'Male', '123 Main St', 101, 'City', '12345-678', 'Apto 302', 'SP', 'São Paulo', 12345678901, 'john.doe@example.com', 'Health Plan A', 'No significant history');
 
 INSERT INTO paciente (id, nome, cpf, dt_nascimento, sexo, logradouro, numero, bairro, cep, complemento, uf, cidade, telefone, email, plano_saude, historico_medico)

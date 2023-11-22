@@ -1,0 +1,101 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="884CEDF7-A544-4D23-A178-4861457A7B06" name="exame mri">
+<createdBy>nicni</createdBy>
+<createdTime>2023-11-21 14:28:08 UTC</createdTime>
+<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
+<engineerTo>
+<item key="5A551C15-CD3B-1602-BEDA-5573F54E356F" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id" id="F554E183-C374-87A4-5ADD-35677077BB9D">
+<createdBy>nicni</createdBy>
+<createdTime>2023-11-21 19:54:28 UTC</createdTime>
+<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
+<engineerTo>
+<item key="5A551C15-CD3B-1602-BEDA-5573F54E356F" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="image path" id="6D27E5F1-754A-450A-2543-B4FED1464368">
+<createdBy>nicni</createdBy>
+<createdTime>2023-11-21 19:54:40 UTC</createdTime>
+<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
+<engineerTo>
+<item key="5A551C15-CD3B-1602-BEDA-5573F54E356F" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>300 CHAR</dataTypeSize>
+<ownDataTypeParameters>300 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="tumor type" id="056C16A7-3ABF-1931-CDD8-1BFE27559096">
+<createdBy>nicni</createdBy>
+<createdTime>2023-11-21 20:00:18 UTC</createdTime>
+<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
+<engineerTo>
+<item key="5A551C15-CD3B-1602-BEDA-5573F54E356F" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>300 CHAR</dataTypeSize>
+<ownDataTypeParameters>300 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="tumor probability" id="FD72B1C6-B717-2C7B-E329-344941251D50">
+<createdBy>nicni</createdBy>
+<createdTime>2023-11-21 20:00:59 UTC</createdTime>
+<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
+<engineerTo>
+<item key="5A551C15-CD3B-1602-BEDA-5573F54E356F" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,6,2</ownDataTypeParameters>
+</Attribute>
+<Attribute name="paciente id" id="12635BA8-DA81-A493-20BC-F25B5F2CC926">
+<createdBy>nicni</createdBy>
+<createdTime>2023-11-21 20:44:08 UTC</createdTime>
+<generatorID>3D3F2E05-A259-F518-C452-533F081485E3</generatorID>
+<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
+<engineerTo>
+<item key="5A551C15-CD3B-1602-BEDA-5573F54E356F" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<referedAttribute>D6613AFA-EC4A-EE03-7035-9BF452C35BFE</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="D6085F87-495F-8F48-73C8-F49BB8FD6E20" name="exame_mri_PK">
+<createdBy>nicni</createdBy>
+<createdTime>2023-11-21 19:54:39 UTC</createdTime>
+<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="5A551C15-CD3B-1602-BEDA-5573F54E356F" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>F554E183-C374-87A4-5ADD-35677077BB9D</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

@@ -1,0 +1,165 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="B31ED76B-16C2-8617-A644-A4B6CF0D57C6" name="endereco">
+<createdBy>nicni</createdBy>
+<createdTime>2023-11-21 13:53:15 UTC</createdTime>
+<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
+<engineerTo>
+<item key="5A551C15-CD3B-1602-BEDA-5573F54E356F" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id" id="F332FD29-9078-AFF3-5527-0BAE03DBF9B9">
+<createdBy>nicni</createdBy>
+<createdTime>2023-11-21 13:53:22 UTC</createdTime>
+<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
+<engineerTo>
+<item key="5A551C15-CD3B-1602-BEDA-5573F54E356F" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="logradouro" id="74630F49-1B95-B127-E741-1721EF4046DC">
+<createdBy>nicni</createdBy>
+<createdTime>2023-11-21 13:58:44 UTC</createdTime>
+<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
+<engineerTo>
+<item key="5A551C15-CD3B-1602-BEDA-5573F54E356F" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 CHAR</dataTypeSize>
+<ownDataTypeParameters>100 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="bairro" id="C79F8A03-2315-C7C2-D19A-F4B541E7E1B4">
+<createdBy>nicni</createdBy>
+<createdTime>2023-11-21 13:59:22 UTC</createdTime>
+<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
+<engineerTo>
+<item key="5A551C15-CD3B-1602-BEDA-5573F54E356F" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 CHAR</dataTypeSize>
+<ownDataTypeParameters>100 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="cep" id="8280EE43-C037-D42A-4C60-5B8E5C8430B0">
+<createdBy>nicni</createdBy>
+<createdTime>2023-11-21 13:59:46 UTC</createdTime>
+<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
+<engineerTo>
+<item key="5A551C15-CD3B-1602-BEDA-5573F54E356F" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>9 CHAR</dataTypeSize>
+<ownDataTypeParameters>9 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="complemento" id="25DBF7E0-7183-EB2E-7687-24D96381FD5C">
+<createdBy>nicni</createdBy>
+<createdTime>2023-11-21 14:00:00 UTC</createdTime>
+<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
+<engineerTo>
+<item key="5A551C15-CD3B-1602-BEDA-5573F54E356F" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 CHAR</dataTypeSize>
+<ownDataTypeParameters>100 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="numero" id="BA276367-79AF-B63F-2731-958E8BEE4473">
+<createdBy>nicni</createdBy>
+<createdTime>2023-11-21 14:00:15 UTC</createdTime>
+<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
+<engineerTo>
+<item key="5A551C15-CD3B-1602-BEDA-5573F54E356F" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<ownDataTypeParameters>20 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="uf" id="0148168B-7FB5-948C-EDAB-647E3D889E4D">
+<createdBy>nicni</createdBy>
+<createdTime>2023-11-21 14:00:30 UTC</createdTime>
+<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
+<engineerTo>
+<item key="5A551C15-CD3B-1602-BEDA-5573F54E356F" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>2 CHAR</dataTypeSize>
+<ownDataTypeParameters>2 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="cidade" id="F783AD8B-20DE-C50D-60F3-A54018BC9199">
+<createdBy>nicni</createdBy>
+<createdTime>2023-11-21 14:00:43 UTC</createdTime>
+<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
+<engineerTo>
+<item key="5A551C15-CD3B-1602-BEDA-5573F54E356F" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 CHAR</dataTypeSize>
+<ownDataTypeParameters>100 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="medico id" id="3E97887C-9711-8042-85A9-711821B71AD6">
+<createdBy>nicni</createdBy>
+<createdTime>2023-11-21 22:12:15 UTC</createdTime>
+<generatorID>4E1B385D-C031-85A5-AE5B-709D6457DFDF</generatorID>
+<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
+<engineerTo>
+<item key="5A551C15-CD3B-1602-BEDA-5573F54E356F" value="true"/>
+</engineerTo>
+<referedAttribute>F4BE440A-C4C3-623B-4560-29BDCEF61944</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="paciente id" id="A6FB16BF-277D-60E6-C572-035469F36488">
+<createdBy>nicni</createdBy>
+<createdTime>2023-11-21 22:13:27 UTC</createdTime>
+<generatorID>16FBD9B9-2C44-281F-A028-CB9568F2E98B</generatorID>
+<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
+<engineerTo>
+<item key="5A551C15-CD3B-1602-BEDA-5573F54E356F" value="true"/>
+</engineerTo>
+<referedAttribute>D6613AFA-EC4A-EE03-7035-9BF452C35BFE</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="047AE6FA-C811-5888-1160-DD9AB8AEEC8A" name="endereco PK">
+<createdBy>nicni</createdBy>
+<createdTime>2023-11-21 13:53:32 UTC</createdTime>
+<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="5A551C15-CD3B-1602-BEDA-5573F54E356F" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>F332FD29-9078-AFF3-5527-0BAE03DBF9B9</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

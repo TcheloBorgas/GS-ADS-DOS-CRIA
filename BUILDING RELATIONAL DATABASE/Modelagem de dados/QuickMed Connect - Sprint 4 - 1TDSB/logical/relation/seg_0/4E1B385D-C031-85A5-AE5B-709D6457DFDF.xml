@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="medico endereco FK" directorySegmentName="seg_0" id="4E1B385D-C031-85A5-AE5B-709D6457DFDF">
+<createdBy>nicni</createdBy>
+<createdTime>2023-11-21 20:17:44 UTC</createdTime>
+<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
+<engineerTo>
+<item key="5A551C15-CD3B-1602-BEDA-5573F54E356F" value="true"/>
+</engineerTo>
+<sourcePk>047AE6FA-C811-5888-1160-DD9AB8AEEC8A</sourcePk>
+<targetPk>05CE0201-8D06-DCD1-A36C-CC96A6A532AC</targetPk>
+<identifying>false</identifying>
+<optionalSource>false</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>B31ED76B-16C2-8617-A644-A4B6CF0D57C6</sourceEntity>
+<targetCardinalityString>1</targetCardinalityString>
+<targetEntity>94CAF82D-187F-7CF1-3C82-7DC144E5F0E2</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

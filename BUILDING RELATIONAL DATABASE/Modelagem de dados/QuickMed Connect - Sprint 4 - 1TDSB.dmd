@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="QuickMed Connect - Sprint 4 - 1TDSB" id="9426D299-A4B4-61E6-2634-8310C4C9F566" version="3.5">
+<createdBy>nicni</createdBy>
+<createdTime>2023-11-20 21:01:25 UTC</createdTime>
+<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>9426D299-A4B4-61E6-2634-8310C4C9F566</designId>
+</OSDM_Design>
