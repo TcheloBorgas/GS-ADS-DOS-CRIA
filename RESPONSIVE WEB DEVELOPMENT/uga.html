@@ -60,12 +60,16 @@
 
         <!-- Criar Entrada para Consulta, Paciente, Médico e Prediagnóstico -->
         <!-- Repita o padrão abaixo para cada entidade, ajustando a ação do formulário -->
-        <form action="http://localhost:5000/consulta/create" method="post">
+        <form action="http://localhost:5000/predict" method="post">
             <h2>Criar Consulta</h2>
-            <input type="text" name="field1" placeholder="Campo 1">
-            <input type="text" name="field2" placeholder="Campo 2">
+            <input type="text" name="Leukocytes" placeholder="Leucócitos">
+            <input type="text" name="Platelets" placeholder="Plaquetas">
+            <input type="text" name="Mean platelet volume" placeholder="Volume médio de plaquetas">
+            <input type="text" name="Eosinophils" placeholder="Eosinófilos">
+            <input type="text" name="Proteina C reativa mg/dL" placeholder="Proteina C reativa mg/dL">
             <button type="submit">Criar</button>
         </form>
+        
 
         <!-- Formulários de Atualização e Links de Leitura e Deleção -->
         <!-- Siga o padrão para 'update', 'read' e 'delete' para cada entidade -->
@@ -83,3 +87,43 @@
     <!-- JavaScript opcional para validação e interatividade -->
 </body>
 </html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hemograma API Frontend</title>
+</head>
+
+
+    <script>
+        // JavaScript para processar o envio do formulário e fazer uma solicitação POST para a API
+        document.getElementById('predictionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            var formData = {
+                Leukocytes: document.getElementById('Leukocytes').value,
+                Platelets: document.getElementById('Platelets').value,
+                Mean_platelet_volume: document.getElementById('Mean_platelet_volume').value,
+                Eosinophils: document.getElementById('Eosinophils').value,
+                Proteina_C_reativa_mg_dL: document.getElementById('Proteina_C_reativa_mg_dL').value
+            };
+
+            fetch('http://localhost:5000/predict', {  // Substitua pela URL da sua API
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('predictionResult').textContent = 'Prediction: ' + data.prediction;
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+</body>
+</html>
+
+

@@ -15,7 +15,6 @@ import org.springframework.boot.autoconfigure.web.WebProperties;
 public class Medico {
 
 @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
     private String nome;
     private String email;
     private String crm;
@@ -32,5 +31,22 @@ public class Medico {
         this.especialidade = dados.especialidade();
         this.telefone = dados.telefone();
         this.endereco = new Endereco(dados.endereco());
+    }
+
+            public Long getId() {
+                return null;
+                }
+
+    public void atualizarIndinformacoes(DadosAtualizacaoMedico dados) {
+        if (dados.nome() != null){
+            this.nome = dados.nome();
+        }
+        if (dados.telefone()!= null){
+            this.telefone = dados.telefone();
+
+        }
+        if (dados.endereco() !=null){
+            this.endereco.atualizarInformacoes(dados.endereco());
+        }
     }
 }
