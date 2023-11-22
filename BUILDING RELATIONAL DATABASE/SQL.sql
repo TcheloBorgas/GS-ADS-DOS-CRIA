@@ -4,21 +4,22 @@
 -- Nicolas E. Inohue - RM98057
 -- Ricardo Brito 
 
-DROP TABLE paciente;
-DROP TABLE medico;
-DROP TABLE endereco;
-DROP TABLE especialidade;
-DROP TABLE plano_saude;
-DROP TABLE exame_sangue;
-DROP TABLE exame_mri;
-DROP TABLE consulta;
-DROP TABLE prediagnostico;
+DROP TABLE paciente CASCADE CONSTRAINTS;
+DROP TABLE medico CASCADE CONSTRAINTS;
+DROP TABLE endereco CASCADE CONSTRAINTS;
+DROP TABLE especialidade CASCADE CONSTRAINTS;
+DROP TABLE plano_saude CASCADE CONSTRAINTS;
+DROP TABLE exame_sangue CASCADE CONSTRAINTS;
+DROP TABLE exame_mri CASCADE CONSTRAINTS;
+DROP TABLE consulta CASCADE CONSTRAINTS;
+DROP TABLE prediagnostico CASCADE CONSTRAINTS;
 
 CREATE TABLE consulta (
     id NUMBER CONSTRAINT id_consulta_pk PRIMARY KEY,
     data_consulta DATE CONSTRAINT data_consulta_nn NOT NULL,
     horario_consulta TIMESTAMP CONSTRAINT horario_consulta_nn NOT NULL,
     paciente_id NUMBER,
+    id_prediagnostico NUMBER,
     medico_id NUMBER
 );
 
@@ -31,16 +32,22 @@ CREATE TABLE paciente (
     email VARCHAR2(100) CONSTRAINT email_paciente_nn NOT NULL,
     telefone VARCHAR2(20) CONSTRAINT telefone_paciente_nn NOT NULL,
     historico_medico VARCHAR2(500) CONSTRAINT historico_medico_paciente_nn NOT NULL,
+    id_endereco NUMBER,
+    id_planosaude NUMBER,
+    id_prediagnostico NUMBER,
+    id_especialidade NUMBER,
     consulta_id NUMBER
 );
 
 CREATE TABLE medico (
     id NUMBER CONSTRAINT id_medico_pk PRIMARY KEY,
     nome VARCHAR2(100) CONSTRAINT nome_medico_nn NOT NULL,
-    email varchar2(100) CONSTRAINT email_medico_nn_uk NOT NULL UNIQUE,
+    email VARCHAR2(100) CONSTRAINT email_medico_nn_uk NOT NULL UNIQUE,
     crm VARCHAR2(8) CONSTRAINT crm_medico_nn_uk NOT NULL UNIQUE,
     telefone VARCHAR2(20) CONSTRAINT telefone_medico_nn NOT NULL,
+    id_endereco NUMBER,
     consulta_id NUMBER,
+    id_especialidade NUMBER,
     prediagnostico_id NUMBER
 );
 
@@ -52,7 +59,7 @@ CREATE TABLE endereco (
     complemento VARCHAR2(100) CONSTRAINT complemento_endereco_nn NOT NULL,
     numero VARCHAR2(20) CONSTRAINT numero_endereco_nn NOT NULL,
     uf VARCHAR2(2) CONSTRAINT uf_endereco_nn NOT NULL,
-    cidade VARCHAR2(100) CONSTRAINT cidade_endereco_nn NOT NULL,
+    cidade VARCHAR2(100) CONSTRAINT cidade_endereco_nn NOT NULL
 );
 
 CREATE TABLE especialidade (
@@ -63,16 +70,18 @@ CREATE TABLE especialidade (
 CREATE TABLE plano_saude (
     id NUMBER CONSTRAINT id_planosaude_pk PRIMARY KEY,
     nome VARCHAR(255) CONSTRAINT nome_planosaude_nn NOT NULL,
-    descricao VARCHAR2(300) CONSTRAINT descricao_planosaude_nn NOT NULL,
+    descricao VARCHAR2(300) CONSTRAINT descricao_planosaude_nn NOT NULL
 );
 
 CREATE TABLE exame_sangue (
     id NUMBER CONSTRAINT id_examesangue_pk PRIMARY KEY,
     leukocytes FLOAT(6) CONSTRAINT leukocytes_examesangue_nn NOT NULL,
-    platelets FLOAT(6), CONSTRAINT platelets_examesangue_nn NOT NULL,
+    platelets FLOAT(6) CONSTRAINT platelets_examesangue_nn NOT NULL,
     mean_platelet_volume FLOAT(6) CONSTRAINT meanplatvol_examesangue_nn NOT NULL,
     eosinophils FLOAT(6) CONSTRAINT eosinophils_examesangue_nn NOT NULL,
     proteinac_reativa FLOAT(6) CONSTRAINT proteinac_examesangue_nn NOT NULL,
+    id_paciente NUMBER,
+    id_consulta NUMBER
 );
 
 CREATE TABLE exame_mri (
@@ -80,6 +89,8 @@ CREATE TABLE exame_mri (
     image_path VARCHAR2(300) CONSTRAINT imagepath_examemri_nn NOT NULL,
     tumor_type VARCHAR2(300) CONSTRAINT tumortype_examemri_nn NOT NULL,
     tumor_probability FLOAT(6) CONSTRAINT tumorprob_examemri_nn NOT NULL,
+    id_paciente NUMBER,
+    id_consulta NUMBER
 );
 
 CREATE TABLE prediagnostico (
@@ -112,12 +123,6 @@ ALTER TABLE consulta
 ADD CONSTRAINT fk_consulta_medico FOREIGN KEY (medico_id) REFERENCES medico (id);
 
 ALTER TABLE consulta
-ADD CONSTRAINT fk_consulta_paciente FOREIGN KEY (id_paciente) REFERENCES paciente(id);
-
-ALTER TABLE consulta
-ADD CONSTRAINT fk_consulta_medico FOREIGN KEY (id_medico) REFERENCES medico(id);
-
-ALTER TABLE consulta
 ADD CONSTRAINT fk_consulta_prediagnostico FOREIGN KEY (id_prediagnostico) REFERENCES prediagnostico(id);
 
 ALTER TABLE medico
@@ -139,8 +144,7 @@ ALTER TABLE prediagnostico
 ADD CONSTRAINT fk_prediagnostico_medico FOREIGN KEY (medico_id) REFERENCES medico (id);
 
 ALTER TABLE exame_sangue
-ADD CONSTRAINT fk_examesangue_paciente
-FOREIGN KEY (id_paciente) REFERENCES paciente(id);
+ADD CONSTRAINT fk_examesangue_paciente FOREIGN KEY (id_paciente) REFERENCES paciente(id);
 
 ALTER TABLE exame_sangue
 ADD CONSTRAINT fk_examesangue_consulta FOREIGN KEY (id_consulta) REFERENCES consulta(id);
@@ -184,66 +188,66 @@ INSERT INTO consulta (id, data_consulta, horario_consulta)
 VALUES (10, TO_DATE('2023-11-26', 'YYYY-MM-DD'), TO_DATE('2023-11-26 11:00:00', 'YYYY-MM-DD HH24:MI:SS'));
 
 -- Inserindo dados na tabela Paciente
-INSERT INTO paciente (id, nome, cpf, dt_nascimento, sexo, telefone, email, historico_medico)
-VALUES (101, 'John Doe', '12345678901', TO_DATE('1990-01-01', 'YYYY-MM-DD'), 'Male', '123 Main St', 101, 'City', '12345-678', 'Apto 302', 'SP', 'São Paulo', 12345678901, 'john.doe@example.com', 'Health Plan A', 'No significant history');
+INSERT INTO paciente (id, nome, cpf, dt_nascimento, sexo, email, telefone, historico_medico)
+VALUES (101, 'John Doe', '12345678901', TO_DATE('1990-01-01', 'YYYY-MM-DD'), 'Male', 'john.doe@example.com', 'Health Plan A', 'No significant history');
 
-INSERT INTO paciente (id, nome, cpf, dt_nascimento, sexo, logradouro, numero, bairro, cep, complemento, uf, cidade, telefone, email, plano_saude, historico_medico)
-VALUES (102, 'Jane Smith', '98765432101', TO_DATE('1985-05-15', 'YYYY-MM-DD'), 'Female', '456 Oak St', 202, 'Town', '54321-876', 'Casa 1', 'RJ', 'Rio de Janeiro', 98765432102, 'jane.smith@example.com', 'Health Plan B', 'Allergies to penicillin');
+INSERT INTO paciente (id, nome, cpf, dt_nascimento, sexo, email, telefone, historico_medico)
+VALUES (102, 'Jane Smith', '98765432101', TO_DATE('1985-05-15', 'YYYY-MM-DD'), 'Female', 'jane.smith@example.com', 'Health Plan B', 'Allergies to penicillin');
 
-INSERT INTO paciente (id, nome, cpf, dt_nascimento, sexo, logradouro, numero, bairro, cep, complemento, uf, cidade, telefone, email, plano_saude, historico_medico)
-VALUES (103, 'Michael Johnson', '55566677788', TO_DATE('1982-08-20', 'YYYY-MM-DD'), 'Male', '789 Pine St', 303, 'Village', '98765-432', 'Sala 105', 'MG', 'Belo Horizonte', 5551112233, 'michael.johnson@example.com', 'Health Plan C', 'Hypertension');
+INSERT INTO paciente (id, nome, cpf, dt_nascimento, sexo, email, telefone, historico_medico)
+VALUES (103, 'Michael Johnson', '55566677788', TO_DATE('1982-08-20', 'YYYY-MM-DD'), 'Male', 'michael.johnson@example.com', 'Health Plan C', 'Hypertension');
 
-INSERT INTO paciente (id, nome, cpf, dt_nascimento, sexo, logradouro, numero, bairro, cep, complemento, uf, cidade, telefone, email, plano_saude, historico_medico)
-VALUES (104, 'Emily Davis', '99988877766', TO_DATE('1995-04-12', 'YYYY-MM-DD'), 'Female', '987 Cedar St', 404, 'Hamlet', '45678-901', 'Andar 3', 'RS', 'Porto Alegre', 9993334455, 'emily.davis@example.com', 'Health Plan D', 'Asthma');
+INSERT INTO paciente (id, nome, cpf, dt_nascimento, sexo, email, telefone, historico_medico)
+VALUES (104, 'Emily Davis', '99988877766', TO_DATE('1995-04-12', 'YYYY-MM-DD'), 'Female', 'emily.davis@example.com', 'Health Plan D', 'Asthma');
 
-INSERT INTO paciente (id, nome, cpf, dt_nascimento, sexo, logradouro, numero, bairro, cep, complemento, uf, cidade, telefone, email, plano_saude, historico_medico)
-VALUES (105, 'David Wilson', '11122233344', TO_DATE('1988-11-25', 'YYYY-MM-DD'), 'Male', '654 Elm St', 505, 'Borough', '65432-109', 'Bloco C', 'PR', 'Curitiba', 1112223344, 'david.wilson@example.com', 'Health Plan E', 'None');
+INSERT INTO paciente (id, nome, cpf, dt_nascimento, sexo, email, telefone, historico_medico)
+VALUES (105, 'David Wilson', '11122233344', TO_DATE('1988-11-25', 'YYYY-MM-DD'), 'Male', 'david.wilson@example.com', 'Health Plan E', 'None');
 
-INSERT INTO paciente (id, nome, cpf, dt_nascimento, sexo, logradouro, numero, bairro, cep, complemento, uf, cidade, telefone, email, plano_saude, historico_medico)
-VALUES (106, 'Isabel Silva', '77788899900', TO_DATE('1993-07-08', 'YYYY-MM-DD'), 'Female', '321 Maple St', 606, 'District', '87654-321', 'Apto 201', 'SC', 'Florianópolis', 7778889990, 'isabel.silva@example.com', 'Health Plan F', 'None');
+INSERT INTO paciente (id, nome, cpf, dt_nascimento, sexo, email, telefone, historico_medico)
+VALUES (106, 'Isabel Silva', '77788899900', TO_DATE('1993-07-08', 'YYYY-MM-DD'), 'Female', 'isabel.silva@example.com', 'Health Plan F', 'None');
 
-INSERT INTO paciente (id, nome, cpf, dt_nascimento, sexo, logradouro, numero, bairro, cep, complemento, uf, cidade, telefone, email, plano_saude, historico_medico)
-VALUES (107, 'Carlos Oliveira', '33344455566', TO_DATE('1980-03-17', 'YYYY-MM-DD'), 'Male', '852 Pine St', 707, 'Vale', '34567-890', 'Casa 2', 'BA', 'Salvador', 3334445556, 'carlos.oliveira@example.com', 'Health Plan G', 'Diabetes');
+INSERT INTO paciente (id, nome, cpf, dt_nascimento, sexo, email, telefone, historico_medico)
+VALUES (107, 'Carlos Oliveira', '33344455566', TO_DATE('1980-03-17', 'YYYY-MM-DD'), 'Male', 'carlos.oliveira@example.com', 'Health Plan G', 'Diabetes');
 
-INSERT INTO paciente (id, nome, cpf, dt_nascimento, sexo, logradouro, numero, bairro, cep, complemento, uf, cidade, telefone, email, plano_saude, historico_medico)
-VALUES (108, 'Fernanda Santos', '12121212121', TO_DATE('1997-12-05', 'YYYY-MM-DD'), 'Female', '753 Oak St', 808, 'Suburb', '23456-789', 'Casa 3', 'PE', 'Recife', 1212121212, 'fernanda.santos@example.com', 'Health Plan H', 'Migraine');
+INSERT INTO paciente (id, nome, cpf, dt_nascimento, sexo, email, telefone, historico_medico)
+VALUES (108, 'Fernanda Santos', '12121212121', TO_DATE('1997-12-05', 'YYYY-MM-DD'), 'Female', 'fernanda.santos@example.com', 'Health Plan H', 'Migraine');
 
-INSERT INTO paciente (id, nome, cpf, dt_nascimento, sexo, logradouro, numero, bairro, cep, complemento, uf, cidade, telefone, email, plano_saude, historico_medico)
-VALUES (109, 'Ricardo Lima', '45454545454', TO_DATE('1984-09-22', 'YYYY-MM-DD'), 'Male', '456 Cedar St', 909, 'Hill', '78901-234', 'Bloco B', 'GO', 'Goiânia', 4545454545, 'ricardo.lima@example.com', 'Health Plan I', 'High cholesterol');
+INSERT INTO paciente (id, nome, cpf, dt_nascimento, sexo, email, telefone, historico_medico)
+VALUES (109, 'Ricardo Lima', '45454545454', TO_DATE('1984-09-22', 'YYYY-MM-DD'), 'Male', 'ricardo.lima@example.com', 'Health Plan I', 'High cholesterol');
 
-INSERT INTO paciente (id, nome, cpf, dt_nascimento, sexo, logradouro, numero, bairro, cep, complemento, uf, cidade, telefone, email, plano_saude, historico_medico)
-VALUES (110, 'Camila Pereira', '66677788899', TO_DATE('1992-02-14', 'YYYY-MM-DD'), 'Female', '987 Pine St', 1010, 'Haven', '56789-012', 'Apto 401', 'DF', 'Brasília', 6667778889, 'camila.pereira@example.com', 'Health Plan J', 'None');
+INSERT INTO paciente (id, nome, cpf, dt_nascimento, sexo, email, telefone, historico_medico)
+VALUES (110, 'Camila Pereira', '66677788899', TO_DATE('1992-02-14', 'YYYY-MM-DD'), 'Female', 'camila.pereira@example.com', 'Health Plan J', 'None');
 
 --Inserindo dados na tabela Medico
-INSERT INTO medico (id, nome, email, especialidade, telefone, crm, logradouro, bairro, cep, complemento, numero, uf, cidade)
-VALUES (201, 'Dr. Anderson', 'dr.anderson@example.com', 'Cardiologist', '555-1234', 'CRM12345', 'City Hospital', 'Central District', '12345-678', 'Sala 102', 15, 'SP', 'São Paulo');
+INSERT INTO medico (id, nome, email, telefone, crm)
+VALUES (201, 'Dr. Anderson', 'dr.anderson@example.com', '555-1234', 'CRM12345');
 
-INSERT INTO medico (id, nome, email, especialidade, telefone, crm, logradouro, bairro, cep, complemento, numero, uf, cidade)
-VALUES (202, 'Dr. Smith', 'dr.smith@example.com', 'Orthopedic Surgeon', '555-5678', 'CRM67890', 'Town Hospital', 'Downtown Area', '54321-876', 'Andar 5', 28, 'RJ', 'Rio de Janeiro');
+INSERT INTO medico (id, nome, email, telefone, crm)
+VALUES (202, 'Dr. Smith', 'dr.smith@example.com', '555-5678', 'CRM67890');
 
-INSERT INTO medico (id, nome, email, especialidade, telefone, crm, logradouro, bairro, cep, complemento, numero, uf, cidade)
-VALUES (203, 'Dr. Martinez', 'dr.martinez@example.com', 'Dermatologist', '555-9876', 'CRM98765', 'Village Clinic', 'Suburbia', '98765-432', 'Apto 301', 7, 'MG', 'Belo Horizonte');
+INSERT INTO medico (id, nome, email, telefone, crm)
+VALUES (203, 'Dr. Martinez', 'dr.martinez@example.com', '555-9876', 'CRM98765');
 
-INSERT INTO medico (id, nome, email, especialidade, telefone, crm, logradouro, bairro, cep, complemento, numero, uf, cidade)
-VALUES (204, 'Dr. Taylor', 'dr.taylor@example.com', 'Neurologist', '555-4321', 'CRM54321', 'Hamlet Medical Center', 'Medical District', '45678-901', 'Bloco B', 42, 'RS', 'Porto Alegre');
+INSERT INTO medico (id, nome, email, telefone, crm)
+VALUES (204, 'Dr. Taylor', 'dr.taylor@example.com', '555-4321', 'CRM54321');
 
-INSERT INTO medico (id, nome, email, especialidade, telefone, crm, logradouro, bairro, cep, complemento, numero, uf, cidade)
-VALUES (205, 'Dr. White', 'dr.white@example.com', 'Pediatrician', '555-8765', 'CRM87654', 'Borough Childrens Hospital', 'Pediatric Zone', '65432-109', 'Sala 205', 10, 'PR', 'Curitiba');
+INSERT INTO medico (id, nome, email, telefone, crm)
+VALUES (205, 'Dr. White', 'dr.white@example.com', '555-8765', 'CRM87654');
 
-INSERT INTO medico (id, nome, email, especialidade, telefone, crm, logradouro, bairro, cep, complemento, numero, uf, cidade)
-VALUES (206, 'Dra. Oliveira', 'dra.oliveira@example.com', 'Gynecologist', '555-3456', 'CRM34567', 'Women Wellness Center', 'Women District', '76543-210', 'Andar 2', 25, 'SC', 'Florianópolis');
+INSERT INTO medico (id, nome, email, telefone, crm)
+VALUES (206, 'Dra. Oliveira', 'dra.oliveira@example.com', '555-3456', 'CRM34567');
 
-INSERT INTO medico (id, nome, email, especialidade, telefone, crm, logradouro, bairro, cep, complemento, numero, uf, cidade)
-VALUES (207, 'Dr. Pereira', 'dr.pereira@example.com', 'Oncologist', '555-7890', 'CRM78901', 'Cancer Care Clinic', 'Oncology Zone', '87654-321', 'Bloco C', 36, 'BA', 'Salvador');
+INSERT INTO medico (id, nome, email, telefone, crm)
+VALUES (207, 'Dr. Pereira', 'dr.pereira@example.com', '555-7890', 'CRM78901');
 
-INSERT INTO medico (id, nome, email, especialidade, telefone, crm, logradouro, bairro, cep, complemento, numero, uf, cidade)
-VALUES (208, 'Dra. Lima', 'dra.lima@example.com', 'Psychiatrist', '555-0123', 'CRM01234', 'Mind Health Institute', 'Mental Health District', '23456-789', 'Sala 301', 15, 'PE', 'Recife');
+INSERT INTO medico (id, nome, email, telefone, crm)
+VALUES (208, 'Dra. Lima', 'dra.lima@example.com', '555-0123', 'CRM01234');
 
-INSERT INTO medico (id, nome, email, especialidade, telefone, crm, logradouro, bairro, cep, complemento, numero, uf, cidade)
-VALUES (209, 'Dr. Santos', 'dr.santos@example.com', 'Urologist', '555-3417', 'CRM32561', 'Urology Center', 'Urology Zone', '87654-321', 'Andar 2', 22, 'GO', 'Goiânia');
+INSERT INTO medico (id, nome, email, telefone, crm)
+VALUES (209, 'Dr. Santos', 'dr.santos@example.com', '555-3417', 'CRM32561');
 
-INSERT INTO medico (id, nome, email, especialidade, telefone, crm, logradouro, bairro, cep, complemento, numero, uf, cidade)
-VALUES (210, 'Dra. Pereira', 'dra.pereira@example.com', 'Endocrinologist', '555-7836', 'CRM98911', 'Endocrinology Clinic', 'Endocrinology Zone', '87654-321', 'Bloco C', 33, 'DF', 'Brasília');
+INSERT INTO medico (id, nome, email, telefone, crm)
+VALUES (210, 'Dra. Pereira', 'dra.pereira@example.com', '555-7836', 'CRM98911');
 
 -- Inserindo dados na tabela Prediagnostico
 INSERT INTO prediagnostico (id, descricao, data_diagnostico, resultado, tratamento_recomendado, setor_recomendado, observacoes)
@@ -276,6 +280,99 @@ VALUES (309, 'Migraine', TO_DATE('2023-11-25', 'YYYY-MM-DD'), 'Positive', 'Pain 
 INSERT INTO prediagnostico (id, descricao, data_diagnostico, resultado, tratamento_recomendado, setor_recomendado, observacoes)
 VALUES (310, 'Stomach Flu', TO_DATE('2023-11-26', 'YYYY-MM-DD'), 'Positive', 'Fluids and Rest', 'Gastroenterology', 'Watch for dehydration and follow a bland diet');
 
+-- Inserts para a tabela endereco
+INSERT INTO endereco
+VALUES (1, 'Rua da Paz, 123', 'Centro', '12345-678', 'Apto 101', '123', 'SP', 'São Paulo');
+
+INSERT INTO endereco
+VALUES (2, 'Avenida da Liberdade, 456', 'Jardins', '98765-432', 'Casa 202', '456', 'RJ', 'Rio de Janeiro');
+
+INSERT INTO endereco
+VALUES (3, 'Rua das Flores, 789', 'Floresta', '54321-876', 'Casa 303', '789', 'MG', 'Belo Horizonte');
+
+INSERT INTO endereco
+VALUES (4, 'Avenida Principal, 101', 'Centro', '87654-321', 'Apto 404', '101', 'RJ', 'Rio de Janeiro');
+
+INSERT INTO endereco
+VALUES (5, 'Rua das Árvores, 202', 'Jardim', '23456-789', 'Casa 505', '202', 'SP', 'São Paulo');
+
+INSERT INTO endereco
+VALUES (6, 'Avenida dos Pássaros, 303', 'Parque', '76543-210', 'Apto 606', '303', 'MG', 'Belo Horizonte');
+
+INSERT INTO endereco
+VALUES (7, 'Rua dos Girassóis, 404', 'Jardim', '87654-321', 'Casa 707', '404', 'RJ', 'Rio de Janeiro');
+
+INSERT INTO endereco
+VALUES (8, 'Avenida da Serra, 505', 'Montanha', '34567-890', 'Apto 808', '505', 'SP', 'São Paulo');
+
+INSERT INTO endereco
+VALUES (9, 'Rua do Riacho, 606', 'Vale', '67890-123', 'Casa 909', '606', 'MG', 'Belo Horizonte');
+
+INSERT INTO endereco
+VALUES (10, 'Avenida do Mar, 707', 'Praia', '98765-432', 'Apto 1010', '707', 'RJ', 'Rio de Janeiro');
+
+-- Inserts para a tabela especialidade
+INSERT INTO especialidade
+VALUES (1, 'Cardiologia');
+
+INSERT INTO especialidade
+VALUES (2, 'Ortopedia');
+
+INSERT INTO especialidade
+VALUES (3, 'Dermatologia');
+
+INSERT INTO especialidade
+VALUES (4, 'Neurologia');
+
+INSERT INTO especialidade
+VALUES (5, 'Oftalmologia');
+
+INSERT INTO especialidade
+VALUES (6, 'Pediatria');
+
+INSERT INTO especialidade
+VALUES (7, 'Psiquiatria');
+
+INSERT INTO especialidade
+VALUES (8, 'Ginecologia');
+
+INSERT INTO especialidade
+VALUES (9, 'Urologia');
+
+INSERT INTO especialidade
+VALUES (10, 'Ortopedia');
+
+-- Inserts para a tabela plano_saude
+INSERT INTO plano_saude
+VALUES (1, 'Plano Saúde SP', 'Plano de Saúde para São Paulo');
+
+INSERT INTO plano_saude
+VALUES (2, 'Plano Saúde RJ', 'Plano de Saúde para Rio de Janeiro');
+
+INSERT INTO plano_saude
+VALUES (3, 'Plano Saúde MG', 'Plano de Saúde para Minas Gerais');
+
+INSERT INTO plano_saude
+VALUES (4, 'Plano Saúde BA', 'Plano de Saúde para Bahia');
+
+INSERT INTO plano_saude
+VALUES (5, 'Plano Saúde RS', 'Plano de Saúde para Rio Grande do Sul');
+
+INSERT INTO plano_saude
+VALUES (6, 'Plano Saúde PR', 'Plano de Saúde para Paraná');
+
+INSERT INTO plano_saude
+VALUES (7, 'Plano Saúde SC', 'Plano de Saúde para Santa Catarina');
+
+INSERT INTO plano_saude
+VALUES (8, 'Plano Saúde PE', 'Plano de Saúde para Pernambuco');
+
+INSERT INTO plano_saude
+VALUES (9, 'Plano Saúde CE', 'Plano de Saúde para Ceará');
+
+INSERT INTO plano_saude
+VALUES (10, 'Plano Saúde DF', 'Plano de Saúde para Distrito Federal');
+
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 --RELATORIOS
 -- Seleciona consulta pelo id da consulta e data da consulta
@@ -285,40 +382,29 @@ WHERE id > 5
 ORDER BY data_consulta, horario_consulta;
 
 -- Seleciona consultas agendadas com informações de médico e paciente
-SELECT c.id, c.data_consulta, c.horario_consulta, m.nome, p.nome
+SELECT c.id, c.data_consulta, c.horario_consulta, m.nome AS nome_medico, p.nome AS nome_paciente
 FROM consulta c
 JOIN medico m ON c.medico_id = m.id
 JOIN paciente p ON c.paciente_id = p.id
 ORDER BY c.data_consulta, c.horario_consulta;
 
--- Seleciona pacientes com sintomas graves e os tratamentos recomendados
-SELECT p.nome, s.descricao, s.gravidade, pd.tratamento_recomendado
-FROM paciente p
-JOIN sintoma s ON p.id = s.paciente_id
-JOIN prediagnostico pd ON p.id = pd.paciente_id
-WHERE s.gravidade = 'Severe'
-ORDER BY p.nome;
-
 -- Lista médicos e seus setores recomendados
-SELECT m.nome, m.especialidade, pd.setor_recomendado
+SELECT m.nome AS nome_medico, e.nome AS nome_especialidade, pd.setor_recomendado
 FROM medico m
 JOIN prediagnostico pd ON m.id = pd.medico_id
+JOIN especialidade e ON m.id_especialidade = e.id
 ORDER BY m.nome;
 
 -- Conta o número de pacientes por sexo e especialidade médica
-SELECT p.sexo, m.especialidade, COUNT(*) AS numero_pacientes
+SELECT p.sexo, e.nome AS nome_especialidade, COUNT(*) AS numero_pacientes
 FROM paciente p
-JOIN consulta c ON p.consulta_id = c.id
+JOIN consulta c ON p.id = c.paciente_id
 JOIN medico m ON c.medico_id = m.id
-GROUP BY p.sexo, m.especialidade;
-
--- Lista sintomas registrados por tipo e gravidade
-SELECT tipo, gravidade, COUNT(*) AS numero_sintomas
-FROM sintoma
-GROUP BY tipo, gravidade;
+JOIN especialidade e ON m.id_especialidade = e.id
+GROUP BY p.sexo, e.nome;
 
 -- Consulta nome do paciente, data de nascimento, sexo e nome do médico associado à consulta do paciente, apenas para pacientes do sexo feminino, ordenação é feita pelo nome do paciente.
-SELECT p.nome, p.dt_nascimento, p.sexo, m.nome
+SELECT p.nome, p.dt_nascimento, p.sexo, m.nome AS nome_medico
 FROM paciente p
 LEFT JOIN consulta c ON p.consulta_id = c.id
 LEFT JOIN medico m ON c.medico_id = m.id
@@ -326,7 +412,7 @@ WHERE p.sexo = 'Female'
 ORDER BY p.nome;
 
 -- Consulta nome do paciente, data de nascimento, sexo e nome do médico associado à consulta do paciente, apenas para pacientes do sexo masculino, ordenação é feita pelo nome do paciente.
-SELECT p.nome, p.dt_nascimento, p.sexo, m.nome
+SELECT p.nome, p.dt_nascimento, p.sexo, m.nome AS nome_medico
 FROM paciente p
 LEFT JOIN consulta c ON p.consulta_id = c.id
 LEFT JOIN medico m ON c.medico_id = m.id
@@ -334,12 +420,12 @@ WHERE p.sexo = 'Male'
 ORDER BY p.nome;
 
 -- Consulta que conta número de pacientes por plano de saúde
-SELECT plano_saude, COUNT(*) AS numero_pacientes
+SELECT id_planosaude, COUNT(*) AS numero_pacientes
 FROM paciente
-GROUP BY plano_saude;
+GROUP BY id_planosaude;
 
 -- Seleciona nome do paciente, data de nascimento, sexo e nome do médico associado à consulta do paciente (apenas pacientes femininos)
-SELECT p.nome, p.dt_nascimento, p.sexo, m.nome
+SELECT p.nome, p.dt_nascimento, p.sexo, m.nome AS nome_medico
 FROM paciente p
 JOIN consulta c ON p.consulta_id = c.id
 JOIN medico m ON c.medico_id = m.id
@@ -347,7 +433,7 @@ WHERE p.sexo = 'Female'
 ORDER BY p.nome;
 
 -- Seleciona nome do paciente, data de nascimento, sexo e nome do médico associado à consulta do paciente (apenas pacientes masculinos)
-SELECT p.nome, p.dt_nascimento, p.sexo, m.nome
+SELECT p.nome, p.dt_nascimento, p.sexo, m.nome AS nome_medico
 FROM paciente p
 JOIN consulta c ON p.consulta_id = c.id
 JOIN medico m ON c.medico_id = m.id
@@ -377,3 +463,8 @@ SELECT * FROM paciente;
 SELECT * FROM medico;
 SELECT * FROM consulta;
 SELECT * FROM prediagnostico;
+SELECT * FROM endereco;
+SELECT * FROM plano_saude;
+SELECT * FROM especialidade;
+SELECT * FROM exame_sangue;
+SELECT * FROM exame_mri;

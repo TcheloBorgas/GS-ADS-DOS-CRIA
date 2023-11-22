@@ -43,6 +43,21 @@
 <ownDataTypeParameters>300 CHAR,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
+<Column name="paciente_id" id="E80AB16E-A1A4-4685-28EB-5470AC90942A">
+<createdBy>nicni</createdBy>
+<createdTime>2023-11-22 02:35:36 UTC</createdTime>
+<generatorID>5EF826DF-8743-C10F-45AB-BEAD0590D3AF</generatorID>
+<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="7338FE3E-4E97-C98C-27EC-2E57395FFBC8" referredColumn="7F1E57B1-CF1C-5339-2C54-D047E4EDB460"/>
+</associations>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="9805DFB6-92B0-F4D3-D35E-AD037538C6B0" name="plano_saude_PK">
@@ -57,13 +72,27 @@
 <colUsage columnID="C48FD55E-5209-10E7-D43A-80F03F03EC83"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="44EC5734-7267-6E88-394C-130A2697713E" name="plano_saude__IDX">
+<ind_PK_UK id="9C031E65-35C1-43C7-08A8-1B5E7EA10109" name="plano_saude__IDXv1">
 <createdBy>nicni</createdBy>
-<createdTime>2023-11-21 22:52:15 UTC</createdTime>
+<createdTime>2023-11-22 02:35:36 UTC</createdTime>
 <ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
 <indexState>Unique Plain Index</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <relationGeneratorID>3F201829-0B92-4869-DD0C-885AFEFAFBAB</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="E80AB16E-A1A4-4685-28EB-5470AC90942A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="795E3BB1-2476-C0BC-8261-8B3EABD6A704" name="plano_saude_paciente_FK">
+<createdBy>nicni</createdBy>
+<createdTime>2023-11-22 02:35:36 UTC</createdTime>
+<generatorID>3F201829-0B92-4869-DD0C-885AFEFAFBAB</generatorID>
+<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E80AB16E-A1A4-4685-28EB-5470AC90942A"/>
+</indexColumnUsage>
 </ind_PK_UK>
 </indexes>
 </Table>

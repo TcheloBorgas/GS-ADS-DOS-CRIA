@@ -59,7 +59,6 @@
 <engineerTo>
 <item key="5A551C15-CD3B-1602-BEDA-5573F54E356F" value="true"/>
 </engineerTo>
-<nullsAllowed>true</nullsAllowed>
 <referedAttribute>D6613AFA-EC4A-EE03-7035-9BF452C35BFE</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -74,7 +73,6 @@
 <engineerTo>
 <item key="5A551C15-CD3B-1602-BEDA-5573F54E356F" value="true"/>
 </engineerTo>
-<nullsAllowed>true</nullsAllowed>
 <referedAttribute>F4BE440A-C4C3-623B-4560-29BDCEF61944</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -90,20 +88,6 @@
 <item key="5A551C15-CD3B-1602-BEDA-5573F54E356F" value="true"/>
 </engineerTo>
 <referedAttribute>F5CEB524-3E59-B521-1B31-AC4F5D517F8D</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="exame mri id" id="5358BFC6-3E85-E069-21B9-CABFA8EB1E88">
-<createdBy>nicni</createdBy>
-<createdTime>2023-11-21 22:14:18 UTC</createdTime>
-<generatorID>1E224CAB-846D-0805-3553-4C63688CD2AB</generatorID>
-<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
-<engineerTo>
-<item key="5A551C15-CD3B-1602-BEDA-5573F54E356F" value="true"/>
-</engineerTo>
-<referedAttribute>F554E183-C374-87A4-5ADD-35677077BB9D</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
