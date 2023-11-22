@@ -6,13 +6,17 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.type.descriptor.jdbc.VarcharJdbcType;
+
 import java.util.Date;
+
+import static java.sql.Types.VARCHAR;
 
 @Getter
 @NoArgsConstructor
 @EqualsAndHashCode
 @AllArgsConstructor
-@Entity
+@Entity(name = "Paciente")
 @Table(name = "paciente")
 public class Paciente {
 
@@ -41,8 +45,9 @@ public class Paciente {
     @Embedded
     private Endereco endereco;
 
-    @Column(name = "sintoma")
-    protected String sintoma;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "sintoma", length = 100, nullable = false)
+    private String sintoma;
 
     @Column(name = "plano_saude")
     protected String planoSaude;
