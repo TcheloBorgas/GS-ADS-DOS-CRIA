@@ -6,11 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.type.descriptor.jdbc.VarcharJdbcType;
-
 import java.util.Date;
 
-import static java.sql.Types.VARCHAR;
 
 @Getter
 @NoArgsConstructor
@@ -45,10 +42,6 @@ public class Paciente {
     @Embedded
     private Endereco endereco;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "sintoma", length = 100, nullable = false)
-    private String sintoma;
-
     @Column(name = "plano_saude")
     protected String planoSaude;
 
@@ -63,7 +56,6 @@ public class Paciente {
         this.email = dados.getEmail();
         this.telefone = dados.getTelefone();
         this.endereco = new Endereco(dados.getEndereco());
-        this.sintoma = dados.getSintoma();
         this.planoSaude = dados.getPlanoSaude();
         this.historicoMedico = dados.getHistoricoMedico();
     }
