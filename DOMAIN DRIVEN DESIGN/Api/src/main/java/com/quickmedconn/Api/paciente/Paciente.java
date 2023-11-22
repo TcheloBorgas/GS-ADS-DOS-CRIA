@@ -6,18 +6,18 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
 import java.util.Date;
 
 @Getter
 @NoArgsConstructor
 @EqualsAndHashCode
 @AllArgsConstructor
-@Entity(name = "Paciente")
+@Entity
 @Table(name = "paciente")
 public class Paciente {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "nome", length = 100, nullable = false)
@@ -33,7 +33,6 @@ public class Paciente {
     private String cpf;
 
     @Column(name = "dt_nascimento", nullable = false)
-    @Temporal(TemporalType.DATE)
     private Date dataNascimento;
 
     @Column(name = "telefone", length = 20, nullable = false)
@@ -42,9 +41,14 @@ public class Paciente {
     @Embedded
     private Endereco endereco;
 
-    private String sintoma;
-    private String planoSaude;
-    private String historicoMedico;
+    @Column(name = "sintoma")
+    protected String sintoma;
+
+    @Column(name = "plano_saude")
+    protected String planoSaude;
+
+    @Column(name = "historico_medico")
+    protected String historicoMedico;
 
     public Paciente(DadosCadastroPaciente dados) {
         this.nome = dados.getNome();
