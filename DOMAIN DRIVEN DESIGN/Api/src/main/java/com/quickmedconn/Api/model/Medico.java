@@ -1,6 +1,9 @@
 package com.quickmedconn.Api.model;
 
 import com.quickmedconn.Api.endereco.Endereco;
+import com.quickmedconn.Api.medico.DadosAtualizacaoMedico;
+import com.quickmedconn.Api.medico.DadosCadastroMedico;
+import com.quickmedconn.Api.medico.Especialidade;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

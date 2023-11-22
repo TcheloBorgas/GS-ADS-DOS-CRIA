@@ -1,6 +1,7 @@
 package com.quickmedconn.Api.model;
 
 import com.quickmedconn.Api.endereco.Endereco;
+import com.quickmedconn.Api.paciente.DadosCadastroPaciente;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
