@@ -1,12 +1,11 @@
-package com.quickmedconn.Api.consulta;
+package com.quickmedconn.Api.controller;
 
-import com.quickmedconn.Api.medico.Medico;
-import com.quickmedconn.Api.paciente.DadosListagemPaciente;
-import com.quickmedconn.Api.paciente.Paciente;
+import com.quickmedconn.Api.consulta.DadosCadastroConsulta;
+import com.quickmedconn.Api.model.Medico;
+import com.quickmedconn.Api.model.Consulta;
+import com.quickmedconn.Api.model.Paciente;
+import com.quickmedconn.Api.repository.ConsultaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;

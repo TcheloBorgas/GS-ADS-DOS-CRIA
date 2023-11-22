@@ -1,5 +1,7 @@
 package com.quickmedconn.Api.medico;
 
+import com.quickmedconn.Api.model.Medico;
+
 public record DadosListagemMedico(
         Long id,
 

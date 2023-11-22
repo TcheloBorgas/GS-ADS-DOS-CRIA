@@ -1,6 +1,7 @@
 package com.quickmedconn.Api.consulta;
 
 import com.quickmedconn.Api.medico.DadosListagemMedico;
+import com.quickmedconn.Api.model.Consulta;
 import com.quickmedconn.Api.paciente.DadosListagemPaciente;
 
 import java.time.LocalDate;

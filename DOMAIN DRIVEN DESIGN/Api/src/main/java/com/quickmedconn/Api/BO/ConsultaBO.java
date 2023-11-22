@@ -1,5 +1,6 @@
-package com.quickmedconn.Api.consulta;
+package com.quickmedconn.Api.BO;
 
+import com.quickmedconn.Api.model.Consulta;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 

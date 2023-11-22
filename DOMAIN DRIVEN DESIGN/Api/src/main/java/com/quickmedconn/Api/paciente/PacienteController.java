@@ -1,6 +1,6 @@
 package com.quickmedconn.Api.paciente;
 
-import com.quickmedconn.Api.paciente.DadosCadastroPaciente;
+import com.quickmedconn.Api.repository.PacienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

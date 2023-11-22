@@ -1,8 +1,5 @@
-package com.quickmedconn.Api.consulta;
+package com.quickmedconn.Api.model;
 
-import com.quickmedconn.Api.medico.Medico;
-import com.quickmedconn.Api.paciente.Paciente;
-import com.quickmedconn.Api.paciente.PacienteRepository;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;

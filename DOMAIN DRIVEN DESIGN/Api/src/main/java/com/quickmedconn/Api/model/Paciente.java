@@ -1,4 +1,4 @@
-package com.quickmedconn.Api.paciente;
+package com.quickmedconn.Api.model;
 
 import com.quickmedconn.Api.endereco.Endereco;
 import jakarta.persistence.*;
