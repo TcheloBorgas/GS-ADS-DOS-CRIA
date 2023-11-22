@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="consulta exame mri FK" directorySegmentName="seg_0" id="1E224CAB-846D-0805-3553-4C63688CD2AB">
+<createdBy>nicni</createdBy>
+<createdTime>2023-11-21 20:41:52 UTC</createdTime>
+<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
+<engineerTo>
+<item key="5A551C15-CD3B-1602-BEDA-5573F54E356F" value="true"/>
+</engineerTo>
+<sourcePk>69202079-1658-32F4-B486-304CF86D30B7</sourcePk>
+<targetPk>D6085F87-495F-8F48-73C8-F49BB8FD6E20</targetPk>
+<identifying>false</identifying>
+<optionalSource>false</optionalSource>
+<optionalTarget>true</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>8B2BB5A9-2C96-EE2A-438A-A76C5980A936</sourceEntity>
+<targetCardinalityString>1</targetCardinalityString>
+<targetEntity>884CEDF7-A544-4D23-A178-4861457A7B06</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

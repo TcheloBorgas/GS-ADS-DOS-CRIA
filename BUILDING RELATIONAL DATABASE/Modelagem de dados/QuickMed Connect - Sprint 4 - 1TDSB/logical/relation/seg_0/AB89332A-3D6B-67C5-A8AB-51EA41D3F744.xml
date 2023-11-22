@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="consulta prediagnostico FK" directorySegmentName="seg_0" id="AB89332A-3D6B-67C5-A8AB-51EA41D3F744">
+<createdBy>nicni</createdBy>
+<createdTime>2023-11-21 20:35:11 UTC</createdTime>
+<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
+<engineerTo>
+<item key="5A551C15-CD3B-1602-BEDA-5573F54E356F" value="true"/>
+</engineerTo>
+<sourcePk>91E34FCC-A915-151B-F3B2-E04FBBAAF8EE</sourcePk>
+<identifying>false</identifying>
+<optionalSource>false</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>0518517D-23CC-C327-D50A-083C571FDEA2</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>8B2BB5A9-2C96-EE2A-438A-A76C5980A936</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

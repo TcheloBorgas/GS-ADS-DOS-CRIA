@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<LogicalDesign class="oracle.dbtools.crest.model.design.logical.LogicalDesign" name="Logical" id="4FE9C2BF-1B1A-8FBA-8B9A-3667B7C1282D" mainViewID="56C3FF78-679E-91CF-A913-03DD8FE2A7C5">
+<createdBy>nicni</createdBy>
+<createdTime>2023-11-20 21:01:25 UTC</createdTime>
+<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</LogicalDesign>

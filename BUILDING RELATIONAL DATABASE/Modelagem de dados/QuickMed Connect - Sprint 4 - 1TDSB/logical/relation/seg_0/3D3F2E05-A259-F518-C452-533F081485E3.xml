@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="exame mri paciente FK" directorySegmentName="seg_0" id="3D3F2E05-A259-F518-C452-533F081485E3">
+<createdBy>nicni</createdBy>
+<createdTime>2023-11-21 20:44:08 UTC</createdTime>
+<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
+<engineerTo>
+<item key="5A551C15-CD3B-1602-BEDA-5573F54E356F" value="true"/>
+</engineerTo>
+<sourcePk>3EF0A5AC-A321-F361-1D36-95970B16452D</sourcePk>
+<identifying>false</identifying>
+<optionalSource>false</optionalSource>
+<optionalTarget>true</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>57D458F3-F758-7B9A-E5C3-FAACFF550D34</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>884CEDF7-A544-4D23-A178-4861457A7B06</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>
