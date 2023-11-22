@@ -55,18 +55,6 @@
 <ownDataTypeParameters>8 CHAR,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="especialidade" id="24B35CD9-58AF-8841-2B2C-023CC5E7EC21">
-<createdBy>nicni</createdBy>
-<createdTime>2023-11-20 21:40:24 UTC</createdTime>
-<generatorID>13D97BCA-E231-A63F-9F46-56B35DCC64E0</generatorID>
-<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>100 CHAR</dataTypeSize>
-<ownDataTypeParameters>100 CHAR,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
 <Column name="telefone" id="D6F69345-C790-6948-8E49-A61BEC1085E8">
 <createdBy>nicni</createdBy>
 <createdTime>2023-11-20 21:40:24 UTC</createdTime>
@@ -77,90 +65,6 @@
 <logicalDatatype>LOGDT024</logicalDatatype>
 <dataTypeSize>20 CHAR</dataTypeSize>
 <ownDataTypeParameters>20 CHAR,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
-<Column name="logradouro" id="7CB6B34D-9174-AD9C-E43D-38C35AED377E">
-<createdBy>nicni</createdBy>
-<createdTime>2023-11-20 21:40:24 UTC</createdTime>
-<generatorID>BB2B7BAB-6899-92CE-5B49-8C9FFE3F819A</generatorID>
-<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>100 CHAR</dataTypeSize>
-<ownDataTypeParameters>100 CHAR,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
-<Column name="bairro" id="B0F598EF-50E8-0954-E541-F01341763E94">
-<createdBy>nicni</createdBy>
-<createdTime>2023-11-20 21:40:24 UTC</createdTime>
-<generatorID>45BE6B81-F781-2695-4F78-21627360A663</generatorID>
-<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>100 CHAR</dataTypeSize>
-<ownDataTypeParameters>100 CHAR,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
-<Column name="cep" id="856D4596-902E-D06B-5468-49E060C1F488">
-<createdBy>nicni</createdBy>
-<createdTime>2023-11-20 21:40:24 UTC</createdTime>
-<generatorID>5DB3F3A6-CCF6-205A-1EAB-2BBE9B86438A</generatorID>
-<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>9 CHAR</dataTypeSize>
-<ownDataTypeParameters>9 CHAR,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
-<Column name="complemento" id="4F6AD976-4581-C18F-1057-0E661DA1962E">
-<createdBy>nicni</createdBy>
-<createdTime>2023-11-20 21:40:24 UTC</createdTime>
-<generatorID>F93C3AA0-91FD-0780-5187-C08F4557F9B9</generatorID>
-<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>100 CHAR</dataTypeSize>
-<ownDataTypeParameters>100 CHAR,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
-<Column name="numero" id="4970742F-2120-DD31-72CB-5DF084809340">
-<createdBy>nicni</createdBy>
-<createdTime>2023-11-20 21:40:24 UTC</createdTime>
-<generatorID>00105604-73C9-5DBE-B1F9-013FF8792AF3</generatorID>
-<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>20 CHAR</dataTypeSize>
-<ownDataTypeParameters>20 CHAR,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
-<Column name="uf" id="43BEBCA4-C410-E483-4D02-13F434E88D67">
-<createdBy>nicni</createdBy>
-<createdTime>2023-11-20 21:40:24 UTC</createdTime>
-<generatorID>5313B0F4-1C84-9856-36AA-BE64CA23CC35</generatorID>
-<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>2 CHAR</dataTypeSize>
-<ownDataTypeParameters>2 CHAR,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
-<Column name="cidade" id="FF30C2A6-5043-249B-77AC-5E25DBFE3B33">
-<createdBy>nicni</createdBy>
-<createdTime>2023-11-20 21:40:24 UTC</createdTime>
-<generatorID>7E721CC7-3C23-88C5-3F11-57DF3E5EE673</generatorID>
-<ownerDesignName>QuickMed Connect - Sprint 4 - 1TDSB</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>100 CHAR</dataTypeSize>
-<ownDataTypeParameters>100 CHAR,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 <Column name="especialidade_id" id="50ED0C5F-5C66-5E0E-793E-75961B3CD739">
