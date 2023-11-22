@@ -8,11 +8,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import java.util.Date;
 
+
 @Getter
 @NoArgsConstructor
 @EqualsAndHashCode
 @AllArgsConstructor
-@Entity
+@Entity(name = "Paciente")
 @Table(name = "paciente")
 public class Paciente {
 
@@ -41,9 +42,6 @@ public class Paciente {
     @Embedded
     private Endereco endereco;
 
-    @Column(name = "sintoma")
-    protected String sintoma;
-
     @Column(name = "plano_saude")
     protected String planoSaude;
 
@@ -58,7 +56,6 @@ public class Paciente {
         this.email = dados.getEmail();
         this.telefone = dados.getTelefone();
         this.endereco = new Endereco(dados.getEndereco());
-        this.sintoma = dados.getSintoma();
         this.planoSaude = dados.getPlanoSaude();
         this.historicoMedico = dados.getHistoricoMedico();
     }
