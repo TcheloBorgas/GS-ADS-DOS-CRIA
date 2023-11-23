@@ -25,4 +25,10 @@ public record DadosCadastroMedico(
         String telefone,
         @NotNull@Valid DadosEndereco endereco) {
 
+    public String getNome() {
+
+    }
+
+    public String getEmail() {
+    }
 }

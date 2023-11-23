@@ -3,6 +3,8 @@ package com.quickmedconn.Api.view;
 import com.quickmedconn.Api.models.Especialidade;
 import com.quickmedconn.Api.models.Medico;
 
+import com.quickmedconn.Api.model.Medico;
+
 public record DadosListagemMedico(
         Long id,
 

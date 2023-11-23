@@ -1,4 +1,4 @@
-package com.quickmedconn.Api.controller;
+package com.quickmedconn.controller;
 
 import com.quickmedconn.Api.models.Consulta;
 import com.quickmedconn.Api.repository.ConsultaRepository;

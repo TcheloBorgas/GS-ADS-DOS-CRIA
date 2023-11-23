@@ -1,13 +1,7 @@
-<<<<<<<< HEAD:DOMAIN DRIVEN DESIGN/Api/src/main/java/com/quickmedconn/Api/models/Paciente.java
-package com.quickmedconn.Api.models;
-
-import com.quickmedconn.Api.view.DadosCadastroPaciente;
-========
 package com.quickmedconn.Api.model;
 
 import com.quickmedconn.Api.endereco.Endereco;
 import com.quickmedconn.Api.paciente.DadosCadastroPaciente;
->>>>>>>> e0361684018fa17620e3b52f9b2fdfb3c35ad70c:DOMAIN DRIVEN DESIGN/Api/src/main/java/com/quickmedconn/Api/model/Paciente.java
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;

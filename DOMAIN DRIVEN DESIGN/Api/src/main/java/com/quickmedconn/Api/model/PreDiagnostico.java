@@ -1,14 +1,7 @@
-<<<<<<<< HEAD:DOMAIN DRIVEN DESIGN/Api/src/main/java/com/quickmedconn/Api/models/PreDiagnostico.java
-package com.quickmedconn.Api.models;
-
-import com.quickmedconn.Api.models.Medico;
-import com.quickmedconn.Api.models.Paciente;
-========
 package com.quickmedconn.Api.model;
 
 import com.quickmedconn.Api.model.Medico;
 import com.quickmedconn.Api.model.Paciente;
->>>>>>>> e0361684018fa17620e3b52f9b2fdfb3c35ad70c:DOMAIN DRIVEN DESIGN/Api/src/main/java/com/quickmedconn/Api/model/PreDiagnostico.java
 import jakarta.persistence.*;
 
 import java.time.LocalDate;

@@ -3,7 +3,7 @@ package com.quickmedconn.Api;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.quickmedconn.Api")
 public class ApiApplication {
 
 	public static void main(String[] args) {

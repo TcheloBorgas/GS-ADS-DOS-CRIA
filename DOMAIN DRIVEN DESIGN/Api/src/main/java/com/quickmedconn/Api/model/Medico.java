@@ -1,20 +1,14 @@
-<<<<<<<< HEAD:DOMAIN DRIVEN DESIGN/Api/src/main/java/com/quickmedconn/Api/models/Medico.java
-package com.quickmedconn.Api.models;
-
-import com.quickmedconn.Api.view.DadosAtualizacaoMedico;
-import com.quickmedconn.Api.view.DadosCadastroMedico;
-========
 package com.quickmedconn.Api.model;
 
 import com.quickmedconn.Api.endereco.Endereco;
 import com.quickmedconn.Api.medico.DadosAtualizacaoMedico;
 import com.quickmedconn.Api.medico.DadosCadastroMedico;
 import com.quickmedconn.Api.medico.Especialidade;
->>>>>>>> e0361684018fa17620e3b52f9b2fdfb3c35ad70c:DOMAIN DRIVEN DESIGN/Api/src/main/java/com/quickmedconn/Api/model/Medico.java
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.boot.autoconfigure.web.WebProperties;
 
 @Table(name = "medicos")
 @Entity(name = "Medico")

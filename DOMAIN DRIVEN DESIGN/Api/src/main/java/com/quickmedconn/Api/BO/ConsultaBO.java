@@ -1,12 +1,6 @@
-<<<<<<<< HEAD:DOMAIN DRIVEN DESIGN/Api/src/main/java/com/quickmedconn/Api/ConsultaBO.java
-package com.quickmedconn.Api;
+package com.quickmedconn.BO;
 
-import com.quickmedconn.Api.models.Consulta;
-========
-package com.quickmedconn.Api.BO;
-
-import com.quickmedconn.Api.model.Consulta;
->>>>>>>> e0361684018fa17620e3b52f9b2fdfb3c35ad70c:DOMAIN DRIVEN DESIGN/Api/src/main/java/com/quickmedconn/Api/BO/ConsultaBO.java
+import com.quickmedconn.model.Consulta;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
