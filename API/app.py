@@ -3,6 +3,7 @@ import os
 from flask import Flask
 from dotenv import load_dotenv
 from routes import initialize_routes
+from routesAI import initialize_routes_AI
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━❮◆❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 #━━━━━━━━❮Variaveis de ambiente❯━━━━━━━━
@@ -20,7 +21,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 #━━━━━━━━❮Rotas❯━━━━━━━━
 initialize_routes(app)
-
+initialize_routes_AI(app)
 
 #━━━━━━━━❮Start❯━━━━━━━━
 
