@@ -36,9 +36,10 @@ def initialize_routes(app):
     rwd =r'C:\Users\pytho\Documents\GitHub\GS-ADS-DOS-CRIA\RESPONSIVE WEB DEVELOPMENT'
 
 
-    @app.route('/', methods=['GET', 'POST'])
+    @app.route('/', methods=['GET'])
     def home():
-        return send_from_directory(rwd, 'medico.html')
+        return app.send_static_file('index.html')
+
 
 
 
