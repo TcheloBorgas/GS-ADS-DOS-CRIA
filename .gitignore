@@ -25,5 +25,5 @@ logs/
 *.svg
 *.mp4
 *.wav
-*.h5
+# *.h5
 
