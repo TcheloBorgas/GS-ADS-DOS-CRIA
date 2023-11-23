@@ -1,4 +1,4 @@
-package com.quickmedconn.Api.model;
+package com.quickmedconn.model;
 
 import jakarta.persistence.*;
 

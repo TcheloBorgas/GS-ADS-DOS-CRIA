@@ -1,4 +1,4 @@
-package com.quickmedconn.Api.BO;
+package com.quickmedconn.BO;
 
 import com.quickmedconn.Api.paciente.DadosCadastroPaciente;
 import org.springframework.stereotype.Service;

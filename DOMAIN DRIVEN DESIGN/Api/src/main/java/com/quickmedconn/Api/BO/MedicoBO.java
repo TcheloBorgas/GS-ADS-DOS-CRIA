@@ -1,4 +1,4 @@
-package com.quickmedconn.Api.medico;
+package com.quickmedconn.medico;
 
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
