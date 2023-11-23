@@ -1,0 +1,256 @@
+@use './abstracts' as *;
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+
+    .div-inputs{
+        display: flex;
+        flex-direction: column;
+        margin-top: 30px;
+        gap: 10px;
+
+        .div-input {
+            display: flex;
+            flex-direction: column;
+
+            .container-input {
+                display: flex;
+                justify-content: space-between;
+                gap: 20px;
+
+                @media(max-width: 800px) {
+                    gap: 5px;
+                }
+            }
+
+            label {
+                background-color: $primary-blue-0;
+                padding: 5px;
+                border-radius: 8px;
+                color: $white-fixed;
+                font-size: $font-size-1;
+                font-weight: 600;
+                width: 130px;
+
+                @media(max-width: 800px) {
+                    font-size: $font-size-3;
+                    width: 105px;
+                }
+            }
+            
+            input {
+                border: 2px solid $grey-0;
+                padding: 5px;
+                border-radius: 8px;
+                font-size: font-size-1;
+                width: 250px;
+                font-weight: 600;
+                outline: 2px solid transparent;
+                transition: 0.2s ease;
+
+                &::placeholder {
+                    font-weight: 400;
+                }
+                &:focus {
+                    border: 2px solid $primary-blue-0;
+                    outline: 2px solid $primary-blue-0;
+                    transition: 0.2s ease;
+                }
+
+                @media(max-width: 420px) {
+                    width: 100%;
+                }
+            }
+
+            .span-error {
+                font-size: $font-size-3;
+                font-weight: 600;
+                margin: 5px 0px;
+                color: $alert-1;
+            }
+        }
+    }
+
+    .link-login {
+        display: flex;
+        margin: 20px 0px;
+        color: $grey-0;
+        font-size: $font-size-1;
+        font-weight: 600;
+        justify-content: center;
+
+        &:hover {
+            text-decoration: underline;
+        }
+
+        @media(max-width: 400px) {
+            font-size: $font-size-3;
+        }
+    }
+
+    .btn-cadastro {
+        background-color: $primary-blue-0;
+        padding: 10px 0px;
+        border-radius: 4px;
+        color: $white-fixed;
+        font-size: $font-size-1;
+        font-weight: 600;
+        transition: 0.2s ease;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 40px;
+        border: none;
+
+        &:hover {
+            background-color: $second-blue-0;
+            transition: 0.2s ease;
+        }
+
+        @media(max-width: 420px) {
+            font-size: $font-size-2;
+            padding: 7px 0px;
+        }
+    }
+}
+
+.form-update-doctor {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+
+    .div-input {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        margin-bottom: 10px;
+
+        label {
+            width: 100px;
+            height: 30px;
+            padding: 3px 5px;
+            border-radius: 4px;
+            background-color: $primary-blue-0;
+            color: $white-fixed;
+            font-size: $font-size-1;
+            font-weight: 600;
+        }
+
+        input {
+            border: 2px solid $grey-0;
+            border-radius: 4px;
+            padding: 0px 5px;
+            width: 300px;
+            height: 30px;
+            transition: 0.2s ease;
+
+            &:focus {
+                border: 2px solid $primary-blue-0;
+                transition: 0.2s ease;
+            }
+        }
+    }
+
+    .box-btns {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 20px;
+        margin-bottom: 40px;
+
+        .btn-exclude {
+            font-size: $font-size-2;
+            font-weight: 600;
+            width: 120px;
+            padding: 5px;
+            background-color: $white-fixed;
+            color: $alert-1;
+            border: 2px solid $alert-1;
+            border-radius: 4px;
+            transition: 0.2s ease;
+
+            &:hover {
+                color: $white-fixed;
+                background-color: $alert-1;
+            }
+        }
+        .btn-update {
+            font-size: $font-size-2;
+            font-weight: 600;
+            width: 150px;
+            padding: 5px;
+            background-color: $white-fixed;
+            color: $grey-0;
+            border: 2px solid $grey-0;
+            border-radius: 4px;
+            transition: 0.2s ease;
+
+            &:hover {
+                color: $white-fixed;
+                background-color: $grey-0;
+            }
+        }
+    }
+
+    .div-checkbox {
+        display: flex;
+        flex-direction: column;
+
+        h3 {
+            color: $grey-0;
+            font-size: $font-title-5;
+            font-weight: 600;
+
+
+            @media(max-width: 330px){
+                font-size: $font-title-6;
+            }
+        }
+
+        > div {
+            display: flex;
+            gap: 20px;
+            margin-top: 10px;
+
+            > div {
+                display: flex;
+                gap: 5px;
+
+                label {
+                    color: $grey-0;
+                    font-size: $font-size-2;
+                }
+            }
+        }
+    }
+}
+
+.login-paciente {
+    border: 3px solid $primary-blue-0;
+    padding: 5px;
+    color: $white-fixed;
+    background-color: $primary-blue-0;
+    border-radius: 4px;
+    font-size: $font-size-1;
+    font-weight: 600;
+    margin-top: 30px;
+    transition: 0.2s ease;
+
+    &:hover {
+        border: 3px solid $second-blue-0;
+        background-color: $second-blue-0;
+        transition: 0.2s ease;
+    }
+}
+
+.login-medico {
+    border: 3px solid $grey-0;
+    padding: 5px;
+    color: $grey-0;
+    background-color: $white-fixed;
+    border-radius: 4px;
+    font-size: $font-size-1;
+    font-weight: 600;
+    margin-top: 10px;
+}

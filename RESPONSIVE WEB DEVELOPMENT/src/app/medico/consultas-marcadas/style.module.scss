@@ -1,0 +1,95 @@
+@use './abstracts' as *;
+
+.menu {
+    width: 100vw;
+    min-height: 100vh;
+    background-color: $white-fixed;
+
+    .container {
+        width: 85vw;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+
+        h2 {
+            color: $grey-0;
+            font-size: $font-title-4;
+            font-weight: 700;
+            margin-top: 30px;
+
+            @media(max-width: 340px){
+                font-size: $font-title-5;
+            }
+        }
+
+        .list {
+            display: flex;
+            flex-direction: column;
+
+            .header-list {
+                display: flex;
+                gap: 5px;
+                margin-top: 20px;
+                margin-bottom: 7px;
+
+                span {
+                    color: $white-fixed;
+                    background-color: $primary-blue-0;
+                    border-radius: 4px;
+                    padding: 10px;
+                    width: 120px;
+                    font-size: $font-size-1;
+                    font-weight: 600;
+                    text-align: center;
+
+                    @media(max-width: 445px){
+                        padding: 5px;
+                        font-size: $font-size-2;
+                        font-weight: 600;
+                        width: 100px;
+                    }
+                }
+            }
+
+            .item {
+                display: flex;
+                width: fit-content;
+                margin-top: 7px;
+                border: 3px solid $grey-0;
+                border-radius: 4px;
+                
+
+                span {
+                    width: 122px;
+                    text-align: center;
+                    padding: 10px;
+                }
+
+                @media(max-width: 445px){
+                    width: 85vw;
+                    border: 2px solid $grey-0;
+                }
+            }
+        }
+    }
+}
+
+.link-exit {
+    position: fixed;
+    bottom: 5vh;
+    right: 5vw;
+    background-color: $alert-1;
+    color: $white-fixed;
+    border-radius: 50%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.2s ease;
+
+    &:hover {
+        background-color: $grey-0;
+        transition: 0.2s ease;
+    }
+}

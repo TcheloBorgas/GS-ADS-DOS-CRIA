@@ -1,0 +1,39 @@
+@use './abstracts' as *;
+
+.menu {
+    width: 100vw;
+    min-height: 100vh;
+    background-color: $white-fixed;
+
+    .container {
+        width: 85vw;
+        margin: 0 auto;
+
+        h2 {
+            color: $grey-0;
+            font-size: $font-title-5;
+            font-weight: 700;
+            margin-top: 30px;
+        }
+    }
+}
+
+.link-exit {
+    position: fixed;
+    bottom: 5vh;
+    right: 5vw;
+    background-color: $alert-1;
+    color: $white-fixed;
+    border-radius: 50%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.2s ease;
+
+    &:hover {
+        background-color: $grey-0;
+        transition: 0.2s ease;
+    }
+}
