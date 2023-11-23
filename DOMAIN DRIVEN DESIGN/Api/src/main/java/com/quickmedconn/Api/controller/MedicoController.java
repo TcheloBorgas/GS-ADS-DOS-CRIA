@@ -1,6 +1,10 @@
 package com.quickmedconn.Api.controller;
 
-import com.quickmedconn.Api.medico.*;
+import com.quickmedconn.Api.models.Medico;
+import com.quickmedconn.Api.repository.MedicoRepository;
+import com.quickmedconn.Api.view.DadosAtualizacaoMedico;
+import com.quickmedconn.Api.view.DadosCadastroMedico;
+import com.quickmedconn.Api.view.DadosListagemMedico;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
