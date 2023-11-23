@@ -19,7 +19,6 @@ CREATE TABLE consulta (
     data_consulta DATE CONSTRAINT data_consulta_nn NOT NULL,
     horario_consulta TIMESTAMP CONSTRAINT horario_consulta_nn NOT NULL,
     paciente_id NUMBER,
-    id_prediagnostico NUMBER,
     medico_id NUMBER
 );
 

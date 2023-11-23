@@ -24,11 +24,11 @@ class ConexaoBancoDados:
             self.conexao.close()
 
     def conectar(self):
-        username = os.getenv('DB_USERNAME')
-        password = os.getenv('DB_PASSWORD')
-        hostname = os.getenv('DB_HOSTNAME')
-        port = os.getenv('DB_PORT')
-        sid = os.getenv('DB_SID')
+        username = 'rm98370'
+        password = '140602'
+        hostname = 'oracle.fiap.com.br'
+        port = '1521'
+        sid = 'orcl'
         dsn = cx_Oracle.makedsn(hostname, port, sid=sid)
         self.conexao = cx_Oracle.connect(username, password, dsn)
 
