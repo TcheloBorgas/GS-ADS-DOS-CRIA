@@ -34,7 +34,8 @@ public class Paciente {
     @Column(name = "telefone", length = 20, nullable = false)
     private String telefone;
 
-    @Embedded
+    @ManyToOne
+    @JoinColumn(name="id_endereco")
     private Endereco endereco;
 
     @Column(name = "plano_saude")

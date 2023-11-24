@@ -17,10 +17,10 @@ public class Medico {
     private String nome;
     private String email;
     private String crm;
-    @Enumerated(EnumType.STRING)
     private Especialidade especialidade;
     private String telefone;
-    @Embedded
+    @ManyToOne
+    @JoinColumn(name="id_endereco")
     private  Endereco endereco;
 
     public Long getId() {

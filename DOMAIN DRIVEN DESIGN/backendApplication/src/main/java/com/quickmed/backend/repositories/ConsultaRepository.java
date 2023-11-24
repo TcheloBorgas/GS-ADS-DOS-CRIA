@@ -1,14 +1,15 @@
 package com.quickmed.backend.repositories;
 
 import com.quickmed.backend.entities.Consulta;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import java.util.List;
-import java.util.Optional;
-
-public interface ConsultaRepository {
-    Optional<Consulta> findById(Long id);
-
-    List<Consulta> findAll();
-
-    Consulta save(Consulta consulta);
+@Repository
+public interface ConsultaRepository extends JpaRepository<Consulta, Long> {
 }
+
+//    Optional<Consulta> findById(Long id);
+//
+//    List<Consulta> findAll();
+//
+//    Consulta save(Consulta consulta);

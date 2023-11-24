@@ -6,7 +6,12 @@ import jakarta.persistence.GenerationType;
 
 import lombok.*;
 
-@Id
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@ToString
+@Entity
 @Table(name = "endereco")
 public class Endereco {
 
