@@ -1,7 +1,7 @@
 package com.quickmed.backend.controller;
 
 import com.quickmed.backend.entities.Paciente;
-import com.quickmed.backend.service.CadastroPacienteService;
+import com.quickmed.backend.service.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,17 +11,17 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/pacientes")
 public class PacienteController {
-    private final CadastroPacienteService cadastroPacienteService;
+    private final PacienteService PacienteService;
 
     @Autowired
-    public PacienteController(CadastroPacienteService cadastroPacienteService){
-        this.cadastroPacienteService = cadastroPacienteService;
+    public PacienteController(PacienteService PacienteService){
+        this.PacienteService = PacienteService;
     }
 
 
     @GetMapping("/{id}")
     public ResponseEntity<Paciente> getPaciente(@PathVariable Long id) {
-        Paciente paciente = CadastroPacienteService.getPacienteById(id);
+        Paciente paciente = PacienteService.getPacienteById;
         if (paciente != null) {
             return new ResponseEntity<>(paciente, HttpStatus.OK);
         } else {
@@ -30,7 +30,7 @@ public class PacienteController {
     }
     @PostMapping
     @Transactional
-    public void cadastrar(@RequestBody CadastroPacienteService dados) {
+    public void cadastrar(@RequestBody PacienteService dados) {
 
         System.out.println("dados recebido: " + dados);
     }

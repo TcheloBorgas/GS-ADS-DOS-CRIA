@@ -17,6 +17,8 @@ public class Medico {
     private String nome;
     private String email;
     private String crm;
+    @ManyToOne
+    @JoinColumn(name="id_especialidade")
     private Especialidade especialidade;
     private String telefone;
     @ManyToOne

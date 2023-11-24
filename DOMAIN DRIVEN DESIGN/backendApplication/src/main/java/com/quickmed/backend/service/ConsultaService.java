@@ -3,7 +3,9 @@ package com.quickmed.backend.service;
 import com.quickmed.backend.entities.Consulta;
 import com.quickmed.backend.repositories.ConsultaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 import java.util.Optional;
@@ -11,11 +13,15 @@ import java.util.Optional;
 @Service
 public class ConsultaService {
 
-    private final ConsultaRepository consultaRepository;
+    private static ConsultaRepository consultaRepository;
 
     @Autowired
     public ConsultaService(ConsultaRepository consultaRepository) {
-        this.consultaRepository = consultaRepository;
+        ConsultaService.consultaRepository = consultaRepository;
+    }
+
+    public static List<Consulta> listarConsultas() {
+        return consultaRepository.findAll();
     }
 
     public Optional<Consulta> getConsultaById(Long id) {
@@ -41,4 +47,7 @@ public class ConsultaService {
         }
     }
 }
+
+
+
 

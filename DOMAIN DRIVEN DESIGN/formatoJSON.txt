@@ -1,0 +1,18 @@
+.{
+"id" : "1",
+"nome" : "Nicolas Inohue",
+"email" : "nicolasinohue@medconex.com",
+"crm" : "ortopedia",
+"telefone" : "956597878",
+"endereco" : { 
+ "Rua Gendtil de moura",
+"logradouro" : "avenida",
+"bairro" : "Alto do ipiranga",
+"cep" : "04156000",
+"cidade" : sao paulo",
+"uf" : "sp",
+"numero" : "171",
+"complemento" : "sobreloja"
+
+	}
+}.

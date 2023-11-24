@@ -43,13 +43,13 @@ public class PlanoSaudeService {
     }
 
     private void copiarCampos(PlanoDeSaude destino, PlanoDeSaude origem) {
-        // Utiliza reflexão para obter todos os campos da classe
+
         Field[] campos = PlanoDeSaude.class.getDeclaredFields();
 
         for (Field campo : campos) {
             campo.setAccessible(true);
             try {
-                // Copia o valor do campo da origem para o destino
+
                 Object valorCampoOrigem = campo.get(origem);
                 if (valorCampoOrigem != null) {
                     campo.set(destino, valorCampoOrigem);
@@ -58,6 +58,22 @@ public class PlanoSaudeService {
                 e.printStackTrace();
             }
         }
+    }
+
+    public PlanoDeSaude getPlanoDeSaudeById(Long id) {
+        return null;
+    }
+
+    public List<PlanoDeSaude> listarPlanosDeSaude() {
+        return null;
+    }
+
+    public PlanoDeSaude cadastrarPlanoDeSaude(PlanoDeSaude planoDeSaude) {
+        return planoDeSaude;
+    }
+
+    public PlanoDeSaude atualizarPlanoDeSaude(Long id, PlanoDeSaude planoDeSaude) {
+        return planoDeSaude;
     }
 }
 

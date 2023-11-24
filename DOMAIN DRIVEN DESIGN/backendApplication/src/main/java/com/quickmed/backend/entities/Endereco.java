@@ -4,13 +4,6 @@ import jakarta.persistence.*;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 
-import lombok.*;
-
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Setter
-@ToString
 @Entity
 @Table(name = "endereco")
 public class Endereco {
@@ -37,28 +30,74 @@ public class Endereco {
     @Column(name = "uf", nullable = false, length = 100)
     private String uf;
 
+    public Long getId() {
+        return id;
+    }
+
     public void setId(Long id) {
-        this.id = id;}
+        this.id = id;
+    }
+
+    public String getLogradouro() {
+        return logradouro;
+    }
 
     public void setLogradouro(String logradouro) {
-        this.logradouro = logradouro;}
+        this.logradouro = logradouro;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
 
     public void setBairro(String bairro) {
-        this.bairro = bairro;}
+        this.bairro = bairro;
+    }
+
+    public String getCep() {
+        return cep;
+    }
 
     public void setCep(String cep) {
-        this.cep = cep;}
+        this.cep = cep;
+    }
+
+    public String getNumero() {
+        return numero;
+    }
 
     public void setNumero(String numero) {
-        this.numero = numero;}
+        this.numero = numero;
+    }
+
+    public String getComplemento() {
+        return complemento;
+    }
 
     public void setComplemento(String complemento) {
-        this.complemento = complemento;}
+        this.complemento = complemento;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
 
     public void setCidade(String cidade) {
-        this.cidade = cidade;}
+        this.cidade = cidade;
+    }
+
+    public String getUf() {
+        return uf;
+    }
 
     public void setUf(String uf) {
-        this.uf = uf;}
+        this.uf = uf;
+    }
+
+    @Override
+    public String toString() {
+        return "Endereco{" + "id=" + id + ", logradouro=" + logradouro + ", bairro=" + bairro + ", cep=" + cep + ", numero=" + numero + ", complemento=" + complemento + ", cidade=" + cidade + ", uf=" + uf + '}';
+    }
+
 
 }
