@@ -1,8 +1,8 @@
- -- Henry Komatsu 
--- Macelo Henrique - RM98893
--- Marcel P. Soddano - RM99841
--- Nicolas E. Inohue - RM98057
--- Ricardo Brito 
+-- Henry Komatsu - RM550684
+-- Marcel Soddano - RM99841
+-- Marcelo Henrique - RM98893
+-- Nicolas Inohue - RM98057
+-- Ricardo Brito - RM98370
 
 DROP TABLE paciente CASCADE CONSTRAINTS;
 DROP TABLE medico CASCADE CONSTRAINTS;
@@ -19,7 +19,8 @@ CREATE TABLE consulta (
     data_consulta DATE CONSTRAINT data_consulta_nn NOT NULL,
     horario_consulta TIMESTAMP CONSTRAINT horario_consulta_nn NOT NULL,
     paciente_id NUMBER,
-    medico_id NUMBER
+    medico_id NUMBER,
+    id_prediagnostico NUMBER
 );
 
 CREATE TABLE paciente (
@@ -152,7 +153,7 @@ ALTER TABLE exame_mri
 ADD CONSTRAINT fk_examemri_paciente FOREIGN KEY (id_paciente) REFERENCES paciente(id);
 
 ALTER TABLE exame_mri
-ADD CONSTRAINT fk_examemri_consulta FOREIGN KEY (id_consulta) REFERENCES consulta(id);
+ADD CONSTRAINT fk_examemri_consulta FOREIGN KEY (id_consulta) REFERENCES CONSULTA(id);
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 -- Inserindo dados na tabela Consulta
@@ -372,6 +373,72 @@ VALUES (9, 'Plano Saúde CE', 'Plano de Saúde para Ceará');
 INSERT INTO plano_saude
 VALUES (10, 'Plano Saúde DF', 'Plano de Saúde para Distrito Federal');
 
+-- Inserts para a tabela exame_sangue
+INSERT INTO exame_sangue (id, leukocytes, platelets, mean_platelet_volume, eosinophils, proteinac_reativa)
+VALUES (1, 7.2, 250000, 8.5, 1.5, 0.8);
+
+INSERT INTO exame_sangue (id, leukocytes, platelets, mean_platelet_volume, eosinophils, proteinac_reativa)
+VALUES (2, 6.8, 300000, 9.0, 2.0, 1.2);
+
+INSERT INTO exame_sangue (id, leukocytes, platelets, mean_platelet_volume, eosinophils, proteinac_reativa)
+VALUES (3, 7.5, 280000, 8.8, 1.8, 1.0);
+
+INSERT INTO exame_sangue (id, leukocytes, platelets, mean_platelet_volume, eosinophils, proteinac_reativa)
+VALUES (4, 6.5, 260000, 8.0, 1.2, 0.5);
+
+INSERT INTO exame_sangue (id, leukocytes, platelets, mean_platelet_volume, eosinophils, proteinac_reativa)
+VALUES (5, 7.0, 270000, 8.2, 1.6, 0.9);
+
+INSERT INTO exame_sangue (id, leukocytes, platelets, mean_platelet_volume, eosinophils, proteinac_reativa)
+VALUES (6, 7.8, 310000, 9.5, 2.5, 1.5);
+
+INSERT INTO exame_sangue (id, leukocytes, platelets, mean_platelet_volume, eosinophils, proteinac_reativa)
+VALUES (7, 6.3, 240000, 7.8, 1.0, 0.3);
+
+INSERT INTO exame_sangue (id, leukocytes, platelets, mean_platelet_volume, eosinophils, proteinac_reativa)
+VALUES (8, 7.4, 260000, 8.1, 1.3, 0.6);
+
+INSERT INTO exame_sangue (id, leukocytes, platelets, mean_platelet_volume, eosinophils, proteinac_reativa)
+VALUES (9, 6.6, 290000, 9.2, 2.2, 1.3);
+
+INSERT INTO exame_sangue (id, leukocytes, platelets, mean_platelet_volume, eosinophils, proteinac_reativa)
+VALUES (10, 7.1, 280000, 8.7, 1.7, 0.7);
+
+-- Inserts para a tabela exame_mri
+INSERT INTO exame_mri (id, image_path, tumor_type, tumor_probability)
+VALUES (1, '/imagens/paciente1/mri1.jpg', 'Benigno', 0.15);
+
+INSERT INTO exame_mri (id, image_path, tumor_type, tumor_probability)
+VALUES (2, '/imagens/paciente2/mri2.jpg', 'Maligno', 0.85);
+
+INSERT INTO exame_mri (id, image_path, tumor_type, tumor_probability)
+VALUES (3, '/imagens/paciente3/mri3.jpg', 'Maligno', 0.78);
+
+INSERT INTO exame_mri (id, image_path, tumor_type, tumor_probability)
+VALUES (4, '/imagens/paciente4/mri4.jpg', 'Benigno', 0.22);
+
+INSERT INTO exame_mri (id, image_path, tumor_type, tumor_probability)
+VALUES (5, '/imagens/paciente5/mri5.jpg', 'Maligno', 0.91);
+
+INSERT INTO exame_mri (id, image_path, tumor_type, tumor_probability)
+VALUES (6, '/imagens/paciente6/mri6.jpg', 'Benigno', 0.12);
+
+INSERT INTO exame_mri (id, image_path, tumor_type, tumor_probability)
+VALUES (7, '/imagens/paciente7/mri7.jpg', 'Maligno', 0.77);
+
+INSERT INTO exame_mri (id, image_path, tumor_type, tumor_probability)
+VALUES (8, '/imagens/paciente8/mri8.jpg', 'Benigno', 0.29);
+
+INSERT INTO exame_mri (id, image_path, tumor_type, tumor_probability)
+VALUES (9, '/imagens/paciente9/mri9.jpg', 'Maligno', 0.68);
+
+INSERT INTO exame_mri (id, image_path, tumor_type, tumor_probability)
+VALUES (10, '/imagens/paciente10/mri10.jpg', 'Benigno', 0.18);
+
+
+
+
+
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 --RELATORIOS
 -- Seleciona consulta pelo id da consulta e data da consulta
@@ -457,6 +524,11 @@ DESC paciente;
 DESC medico;
 DESC consulta;
 DESC prediagnostico;
+DESC endereco;
+DESC plano_saude;
+DESC especialidade;
+DESC exame_sangue;
+DESC exame_mri;
 
 SELECT * FROM paciente;
 SELECT * FROM medico;
