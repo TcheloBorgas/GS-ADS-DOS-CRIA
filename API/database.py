@@ -5,9 +5,6 @@ from dotenv import load_dotenv
 
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━❮◆❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-# Carrega as variáveis de ambiente
-load_dotenv(r'C:\Users\pytho\Documents\GitHub\GS-ADS-DOS-CRIA\AI & CHATBOT\MRI\API\db.env')
-
 
 
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━❮SQL❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -31,3 +28,4 @@ class ConexaoBancoDados:
         sid = 'orcl'
         dsn = cx_Oracle.makedsn(hostname, port, sid=sid)
         self.conexao = cx_Oracle.connect(username, password, dsn)
+        print('Conexão estabelecida')

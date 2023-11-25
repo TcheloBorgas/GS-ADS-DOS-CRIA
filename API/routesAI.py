@@ -4,7 +4,12 @@ import cv2
 import os
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━❮◆❯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 from flask import Flask, request, jsonify, send_from_directory, Response
-from database import ConexaoBancoDados, Consulta, Paciente, Medico, Prediagnostico, MRIAnalysis
+from prediction_model import predict_tumor_type, allowed_file 
+from database import ConexaoBancoDados
+from databaseCONS import Consulta
+from databaseMED import Medico
+from databasePAC import Paciente
+from databasePREV import Prediagnostico, MRIAnalysis
 from prediction_model import predict_tumor_type, allowed_file 
 from hemo_utils import make_prediction
 from werkzeug.utils import secure_filename

@@ -15,11 +15,14 @@ class Medico:
         try:
             with ConexaoBancoDados() as conexao:
                 with conexao.cursor() as cursor:
-                    query = "INSERT INTO medico (id, nome, email, crm, especialidade, telefone, logradouro, bairro, cep, complemento, numero, uf, cidade, consulta_id, prediagnostico_id) VALUES (:1, :2, :3, :4, :5, :6, :7, :8, :9, :10, :11, :12, :13, :14, :15)"
-                    cursor.execute(query, data)
+                    query = "INSERT INTO medico (id, nome, email,  telefone, crm) VALUES (:1, :2, :3, :4, :5)"
                 conexao.commit()
+                print('Medico Criado')
         except cx_Oracle.DatabaseError as e:
             print("Erro ao criar médico:", e)
+
+
+
 
     @staticmethod
     def ler_medicos():
@@ -27,7 +30,9 @@ class Medico:
             with ConexaoBancoDados() as conexao:
                 with conexao.cursor() as cursor:
                     cursor.execute("SELECT * FROM medico")
+                    print('Lendo Medicos')
                     return cursor.fetchall()
+                
         except cx_Oracle.DatabaseError as e:
             print("Erro ao ler médicos:", e)
             return []
@@ -37,8 +42,11 @@ class Medico:
         try:
             with ConexaoBancoDados() as conexao:
                 with conexao.cursor() as cursor:
-                    query = "UPDATE medico SET nome = :1, email = :2, crm = :3, especialidade = :4, telefone = :5, logradouro = :6, bairro = :7, cep = :8, complemento = :9, numero = :10, uf = :11, cidade = :12, consulta_id = :13, prediagnostico_id = :14 WHERE id = :15"
+                    # Corrija a consulta removendo a coluna duplicada 'telefone'
+                    query = "UPDATE medico SET nome = :1, email = :2, telefone = :3, crm = :4 WHERE id = :5"
+                    # Certifique-se de que a ordem e o número de valores em 'data + (id,)' correspondam aos placeholders
                     cursor.execute(query, data + (id,))
+                    print('Medico Atualizado')
                 conexao.commit()
         except cx_Oracle.DatabaseError as e:
             print("Erro ao atualizar médico:", e)
@@ -51,6 +59,7 @@ class Medico:
                     query = "DELETE FROM medico WHERE id = :1"
                     cursor.execute(query, (id,))
                 conexao.commit()
+                print('Medico excluido')
         except cx_Oracle.DatabaseError as e:
             print("Erro ao excluir médico:", e)
     
@@ -66,3 +75,6 @@ class Medico:
         except cx_Oracle.DatabaseError as e:
             print("Erro ao verificar email:", e)
             return False
+        
+        
+    
